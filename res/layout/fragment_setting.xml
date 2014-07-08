@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_shadow"
+    android:scrollbars="none" >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <include
+            android:id="@+id/backBtnLayout"
+            layout="@layout/toolbox_item_back" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_marginLeft="66dip"
+            android:background="@color/toolbox_line" />   
+            
+		<LinearLayout 
+		    android:id="@+id/opinionBtnLayout"
+		    android:background="@drawable/tool_box_fragment_bg_selector"  
+		    android:layout_width="fill_parent" 
+		    android:layout_height="@dimen/toolbox_item_height"
+		    android:clickable="true">
+		    <TextView 
+		    	style="@style/toolbox_textview"
+		        android:id="@+id/toolbox_title" 
+		        android:text="@string/opinion" 
+		        android:layout_marginLeft="66dip"
+		        android:layout_height="@dimen/toolbox_item_height"/>
+		</LinearLayout>        
+        
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_marginLeft="66dip"
+            android:background="@color/toolbox_line" /> 
+            
+		<LinearLayout 
+		    android:id="@+id/praiseBtnLayout"
+		    android:background="@drawable/tool_box_fragment_bg_selector"  
+		    android:layout_width="fill_parent" 
+		    android:layout_height="@dimen/toolbox_item_height"
+		    android:clickable="true">
+		    <TextView 
+		    	style="@style/toolbox_textview"
+		        android:id="@+id/toolbox_title" 
+		        android:text="@string/praise" 
+		        android:layout_marginLeft="66dip"
+		        android:layout_height="@dimen/toolbox_item_height"/>
+		</LinearLayout>   
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_marginLeft="66dip"
+            android:background="@color/toolbox_line" /> 
+            
+		<LinearLayout 
+		    android:id="@+id/aboutBtnLayout"
+		    android:background="@drawable/tool_box_fragment_bg_selector"  
+		    android:layout_width="fill_parent" 
+		    android:layout_height="@dimen/toolbox_item_height"
+		    android:clickable="true">
+		    <TextView 
+		    	style="@style/toolbox_textview"
+		        android:id="@+id/toolbox_title" 
+		        android:text="@string/about" 
+		        android:layout_marginLeft="66dip"
+		        android:layout_height="@dimen/toolbox_item_height"/>
+		</LinearLayout>  
+		        
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_marginLeft="66dip"
+            android:background="@color/toolbox_line" />
+        
+		<RelativeLayout android:id="@+id/cleancacheBtnLayout"
+		    android:background="@drawable/tool_box_fragment_bg_selector"  
+		    android:layout_width="fill_parent" 
+		    android:layout_height="@dimen/toolbox_item_height"
+		    android:clickable="true">
+		     <TextView 
+		        style="@style/toolbox_textview"
+		        android:text="@string/caleanCache" 
+		        android:layout_marginLeft="66dip"/>
+		      <TextView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginRight="20.0dip"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentRight="true"
+		        android:text="29.3M" />
+		</RelativeLayout>        
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_marginLeft="66dip"
+            android:background="@color/toolbox_line" /> 
+            
+		<RelativeLayout android:id="@+id/updateBtnLayout"
+		    android:background="@drawable/tool_box_fragment_bg_selector"  
+		    android:layout_width="fill_parent" 
+		    android:layout_height="@dimen/toolbox_item_height"
+		    android:clickable="true">
+		     <TextView 
+		        style="@style/toolbox_textview"
+		        android:id="@+id/toolbox_title" 
+		        android:text="@string/update" 
+		        android:layout_margin="66dip"/>
+		      <TextView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginRight="20.0dip"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentRight="true"
+		        android:text="1.1.1"  />
+		</RelativeLayout>          
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_marginLeft="68dip"
+            android:background="@color/toolbox_line" />   
+       <Button 
+	        android:layout_marginLeft="65dip"
+	        android:layout_marginRight="65dip"
+            android:layout_marginTop="50dip"
+            android:layout_width="match_parent"
+           	android:layout_height="40dip"
+           	android:gravity="center"
+           	android:text="@string/logout"
+           	android:textColor="#ffffff"
+           	android:textSize="18sp"
+           	android:id="@+id/logout_btn"
+            android:background="@drawable/logout_btn"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,121 @@
+package itstudio.travel.ui;
+import itstudio.travel.R;
+import itstudio.travel.fragment.FragmentHome;
+import itstudio.travel.fragment.LeftSlidingMenuFragment;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
+
+/**
+* @Description MainActivity
+
+* @author MR.Wang
+
+* @date 2014-7-5 上午9:43:33 
+
+* @version V1.0
+*/
+public class MainActivity extends SlidingFragmentActivity implements
+		OnClickListener {
+
+	protected SlidingMenu mSlidingMenu;
+	private ImageButton ivTitleBtnLeft;
+	private Fragment mContent;
+	public static TextView mTextView;
+	public static TextView titleTextView;
+	public static float density;
+	public static float xdpi;
+	public static float ydpi;
+	public static float screenWidth;
+	public static float screenHeight;
+	public static float densityDPI;
+	public static int screenWidthDip;
+	public static int screenHeightDip;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		getDisplayDp();
+		initSlidingMenu();
+		setContentView(R.layout.main_fragment);
+		initView();
+		
+
+	}
+
+	private void initView() {
+		ivTitleBtnLeft = (ImageButton) this.findViewById(R.id.ivTitleBtnLeft22);
+		ivTitleBtnLeft.setOnClickListener(this);
+		mTextView = (TextView) this.findViewById(R.id.ivTitleLoaction);
+		titleTextView = (TextView) this.findViewById(R.id.ivTitleName);
+
+	}
+	private void getDisplayDp() {
+		DisplayMetrics dm = new DisplayMetrics();
+		dm = getResources().getDisplayMetrics();
+		//dm = new DisplayMetrics();
+		//getWindowManager().getDefaultDisplay().getMetrics(dm);
+		density = dm.density; // 屏幕密度（像素比例：0.75/1.0/1.5/2.0）
+		densityDPI = dm.densityDpi; // 屏幕密度（每寸像素：120/160/240/320）
+		xdpi = dm.xdpi;
+		ydpi = dm.ydpi;
+		screenWidthDip = dm.widthPixels; // 屏幕宽（dip，如：320dip）
+		screenHeightDip = dm.heightPixels; // 屏幕（dip，如：533dip）
+		screenWidth = (int) (dm.widthPixels * density + 0.5f); // 屏幕宽（px，如：480px）
+		screenHeight = (int) (dm.heightPixels * density + 0.5f); // 屏幕高（px，如：800px）
+	};
+	private void initSlidingMenu() {
+		// customize the SlidingMenu
+		mSlidingMenu = getSlidingMenu();
+		mSlidingMenu.setMode(SlidingMenu.LEFT_OF);// 设置是左滑还是右滑
+		//getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+		mSlidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);// 设置手势模式
+		mSlidingMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);// 设置菜单宽度
+		mSlidingMenu.setFadeDegree(0.5f);// 设置淡入淡出的比例
+		mSlidingMenu.setShadowDrawable(R.drawable.shadow);// 设置左菜单阴影图片
+		mSlidingMenu.setShadowWidthRes(R.dimen.shadow_width);//
+		mSlidingMenu.setFadeEnabled(true);// 设置滑动时菜单的是否淡入淡出
+		mSlidingMenu.setBehindScrollScale(0);// 设置滑动时拖拽效果
+		
+		setBehindContentView(R.layout.main_left_layout);
+		getSupportFragmentManager()
+		.beginTransaction()
+		.replace(R.id.main_left_fragment, new LeftSlidingMenuFragment())
+		.commit();
+		
+		mContent =  FragmentHome.getInstance(MainActivity.this);
+		getSupportFragmentManager().beginTransaction()
+				.replace(R.id.content_frame, mContent).commit();
+	
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.ivTitleBtnLeft22:
+			mSlidingMenu.showMenu(true);
+			break;
+		default:
+			break;
+		}
+
+	}
+
+	/**
+	 * 左侧菜单点击切换首页的内容
+	 */
+	public void switchContent(Fragment fragment) {
+		mContent = fragment;
+		getSupportFragmentManager().beginTransaction()
+				.replace(R.id.content_frame, fragment).commit();
+		getSlidingMenu().showContent();
+	}
+
+}

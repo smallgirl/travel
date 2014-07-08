@@ -1,0 +1,71 @@
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+	android:background="@color/gray"
+	android:orientation="vertical"
+    android:layout_height="match_parent" >
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="44dip"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal"
+	    android:background="@drawable/title_bg" 
+	    android:padding="0.0px" >
+	    <RelativeLayout
+	        android:layout_width="wrap_content"
+	    	android:layout_height="fill_parent">
+	    	<LinearLayout 
+	    	    android:id="@+id/foods_back"
+	    	    android:gravity="center"
+	    	    android:clickable="true"
+	    	    android:onClick="back"
+	    	    android:layout_width="wrap_content"
+		        android:layout_height="fill_parent"
+			    android:orientation="horizontal">
+			    <ImageButton
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="5dip"
+			        android:background="@drawable/arrow_back"
+			        android:gravity="center"
+			        android:includeFontPadding="false" />
+			    <TextView
+			        android:id="@+id/ivTitleLoaction"
+			        style="@style/A1_Font"
+			        android:textColor="@color/white"
+			        android:layout_width="wrap_content"
+			        android:layout_height="match_parent"
+			        android:ellipsize="end"
+			        android:gravity="center"
+			        android:textSize="20sp"
+			        android:paddingLeft="6.0dip"
+			        android:singleLine="true"
+			        android:text="@string/zhengzhou"  />
+	    	</LinearLayout>
+	        <TextView 
+	            android:id="@+id/title_category"
+		       	android:layout_width="match_parent"
+		       	android:layout_height="match_parent"
+		       	android:text="@string/food" 
+		       	android:textSize="20sp"
+		       	android:textColor="@color/white"
+		       	android:gravity="center"/>
+		    
+	    </RelativeLayout>
+	</LinearLayout>
+    <itstudio.travel.widget.PagerSlidingTabStrip
+        android:id="@+id/tabs_signup"
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+		android:textSize="16sp"
+		android:textColor="#000000"
+        android:background="@drawable/tab_bg" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pagers_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+      />
+
+</LinearLayout>

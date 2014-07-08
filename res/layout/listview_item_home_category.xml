@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout 
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="10dip"
+        android:layout_marginTop="10dip"
+        android:gravity="center_vertical"
+    	 >
+		<ImageView 
+	      	android:layout_width="wrap_content"
+	   		android:layout_height="wrap_content"
+	   		android:src="@drawable/icon_recom"/>
+	    <TextView 
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:text="@string/recommen"
+	    	android:textColor="#7f000000"
+	    	android:textSize="17sp"
+	    	android:textStyle="bold"
+	        />
+    </LinearLayout>
+</LinearLayout>

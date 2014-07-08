@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/gray"  
+    android:layout_width="fill_parent" 
+    android:layout_height="@dimen/toolbox_item_height"
+   >
+
+    <ImageView 
+        android:id="@+id/notification_indicator" 
+        style="@style/toolbox_indicator" 
+        android:src="@drawable/arrow_green" 
+        />
+    
+     <TextView 
+        style="@style/toolbox_textview"
+        android:text="@string/back" 
+        android:layout_toRightOf="@id/notification_indicator"
+        />
+</RelativeLayout>
