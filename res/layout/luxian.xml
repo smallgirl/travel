@@ -45,13 +45,17 @@
             android:paddingLeft="96.0dip"
             android:paddingRight="96.0dip"
             android:singleLine="true"
-            android:text="美食" />
-         <ImageButton 
+            android:text="出行线路" />
+
+         <Button
              android:id="@+id/bt_popup"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:src="@drawable/tianjia"
-             android:layout_alignParentRight="true"/>
+             android:layout_alignParentRight="true"
+             android:layout_marginRight="10dp"
+             android:layout_alignTop="@+id/ivTitleBtnLeft22"
+             android:background="@drawable/tianjia" />
+
     </RelativeLayout>
     
     <com.baidu.mapapi.map.MapView
@@ -63,12 +67,11 @@
 
     <Button
         android:id="@+id/bt_dingwei"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="91dp" 
-        android:background="@drawable/dingwei"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="430dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/bt_dingwei" />
     
 </RelativeLayout>

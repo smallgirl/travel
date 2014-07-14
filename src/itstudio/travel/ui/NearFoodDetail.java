@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.PixelFormat;
@@ -27,9 +28,38 @@ import android.widget.TextView;
 import itstudio.travel.R;
 import itstudio.travel.ui.MyScrollView.OnScrollListener;
 
-public class NearFoodDetail extends Activity {
+public class NearFoodDetail extends Activity implements OnScrollListener{
 	
 	
+	
+	private MyScrollView myScrollView;
+	private LinearLayout mBuyLayout;
+	private WindowManager mWindowManager;
+	/**
+	 * 手机屏幕宽度
+	 */
+	private int screenWidth;
+	/**
+	 * 悬浮框View
+	 */
+	private static View suspendView;
+	/**
+	 * 悬浮框的参数
+	 */
+	private static WindowManager.LayoutParams suspendLayoutParams;
+	/**
+	 * 购买布局的高度
+	 */
+	private int buyLayoutHeight;
+	/**
+	 * myScrollView与其父类布局的顶部距离
+	 */
+	private int myScrollViewTop;
+
+	/**
+	 * 购买布局与其父类布局的顶部距离
+	 */
+	private int buyLayoutTop;
 	
 	
 	private int imageIds[];
@@ -110,7 +140,12 @@ public class NearFoodDetail extends Activity {
 			}
 		});
 		
+		myScrollView = (MyScrollView) findViewById(R.id.scrollView);
+		mBuyLayout = (LinearLayout) findViewById(R.id.buy);
 		
+		myScrollView.setOnScrollListener(this);
+		mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+		screenWidth = mWindowManager.getDefaultDisplay().getWidth();  
 	}
 	private class ViewPagerAdapter extends PagerAdapter {
 
@@ -182,5 +217,81 @@ public class NearFoodDetail extends Activity {
 
 	};
 
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+	}
+
+	/**
+	 * 窗口有焦点的时候，即所有的布局绘制完毕的时候，我们来获取购买布局的高度和myScrollView距离父类布局的顶部位置
+	 */
+	@Override  
+	public void onWindowFocusChanged(boolean hasFocus) {  
+	    super.onWindowFocusChanged(hasFocus);  
+	    if(hasFocus){
+	    	buyLayoutHeight = mBuyLayout.getHeight();
+	    	buyLayoutTop = mBuyLayout.getTop();
+	    	
+	    	myScrollViewTop = myScrollView.getTop();
+	    }
+	} 
+
+
+
+
+	/**
+	 * 滚动的回调方法，当滚动的Y距离大于或者等于 购买布局距离父类布局顶部的位置，就显示购买的悬浮框
+	 * 当滚动的Y的距离小于 购买布局距离父类布局顶部的位置加上购买布局的高度就移除购买的悬浮框
+	 * 
+	 */
+	@Override
+	public void onScroll(int scrollY) {
+		if(scrollY >= buyLayoutTop){
+			if(suspendView == null){
+				showSuspend();
+			}
+		}else if(scrollY <= buyLayoutTop + buyLayoutHeight){
+			if(suspendView != null){
+				removeSuspend();
+			}
+		}
+	}
+
+
+	/**
+	 * 显示购买的悬浮框
+	 */
+	private void showSuspend(){
+		if(suspendView == null){
+			suspendView = LayoutInflater.from(this).inflate(R.layout.listview_item_nearfood_detail_goumai, null);
+			if(suspendLayoutParams == null){
+				suspendLayoutParams = new LayoutParams();
+				suspendLayoutParams.type = LayoutParams.TYPE_PHONE;  
+				suspendLayoutParams.format = PixelFormat.RGBA_8888;  
+				suspendLayoutParams.flags = LayoutParams.FLAG_NOT_TOUCH_MODAL  
+	                     | LayoutParams.FLAG_NOT_FOCUSABLE;  
+				suspendLayoutParams.gravity = Gravity.TOP;  
+				suspendLayoutParams.width = screenWidth;
+				suspendLayoutParams.height = buyLayoutHeight;  
+				suspendLayoutParams.x = 0;  
+				suspendLayoutParams.y = myScrollViewTop;  
+			}
+		}
+		
+		/*添加   权限<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />  */
+		mWindowManager.addView(suspendView, suspendLayoutParams);
+	}
 	
+	
+	/**
+	 * 移除购买的悬浮框
+	 */
+	private void removeSuspend(){
+		if(suspendView != null){
+			mWindowManager.removeView(suspendView);
+			suspendView = null;
+		}
+	}
+
 }

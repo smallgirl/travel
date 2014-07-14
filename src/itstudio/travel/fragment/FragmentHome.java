@@ -42,21 +42,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 /**
-
-* @Description 首页 Fragment
-
-* @author MR.Wang
-
-* @date 2014-7-5 上午12:32:06 
-
-* @version V1.0
-*/
+ * 
+ * @Description 首页 Fragment
+ * 
+ * @author MR.Wang
+ * 
+ * @date 2014-7-5 上午12:32:06
+ * 
+ * @version V1.0
+ */
 
 @SuppressLint("ValidFragment")
-public class FragmentHome extends Fragment  implements
-AbsListView.OnItemClickListener {
+public class FragmentHome extends Fragment implements
+		AbsListView.OnItemClickListener {
 
 	private View rootView;
 	private ListView listView;
@@ -72,73 +71,76 @@ AbsListView.OnItemClickListener {
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
 	private HomeAdapter adpater;
 	private List<String> adImgUrl;// viewPaper广告位的 图片url
-	private List<String > imgUrl;	// listview的 图片url
+	private List<String> imgUrl; // listview的 图片url
 	private List<Recommend> recommends;
-	private Recommend recommend ;
-	
-	//private List<String > titles;
+	private Recommend recommend;
+
+	// private List<String > titles;
 
 	private static FragmentHome singleton;
 
-	public static FragmentHome getInstance(Context context){
-		if(singleton==null){
-			singleton=new FragmentHome(context);
+	public static FragmentHome getInstance(Context context) {
+		if (singleton == null) {
+			singleton = new FragmentHome(context);
 		}
 		return singleton;
 	}
+
 	private FragmentHome(Context context) {
 		this.context = context;
 		imgUrl = new ArrayList<String>();
 		imgUrl.add("drawable://" + R.drawable.pic_seckill_1);
 		imgUrl.add("drawable://" + R.drawable.pic_slide_2);
-		imgUrl.add(R.layout.listview_item_home_category+"");
+		imgUrl.add(R.layout.listview_item_home_category + "");
 		imgUrl.add("drawable://" + R.drawable.pic_slide_3);
 		imgUrl.add("drawable://" + R.drawable.pic_slide_4);
 		imgUrl.add("drawable://" + R.drawable.pic_slide_5);
 		recommends = new ArrayList<Recommend>();
-		
+
 		recommend = new Recommend();
 		recommend.setPicUrl("drawable://" + R.drawable.pic_seckill_1);
 		recommend.setTitle("秒杀1");
 		recommends.add(recommend);
-		
+
 		recommend = new Recommend();
 		recommend.setPicUrl("drawable://" + R.drawable.pic_slide_2);
 		recommend.setTitle("秒杀2");
 		recommends.add(recommend);
-		
+
 		recommend = new Recommend();
 		recommend.setPicUrl("drawable://" + R.drawable.pic_slide_3);
 		recommend.setTitle("秒杀3");
 		recommends.add(recommend);
-		
+
 		recommend = new Recommend();
-		recommend.setPicUrl(R.layout.listview_item_home_category+"");
+		recommend.setPicUrl(R.layout.listview_item_home_category + "");
 		recommend.setTitle("分割icon");
 		recommends.add(recommend);
-		
+
 		recommend = new Recommend();
 		recommend.setPicUrl("drawable://" + R.drawable.pic_slide_4);
 		recommend.setTitle("推荐1");
 		recommends.add(recommend);
-		
+
 		recommend = new Recommend();
 		recommend.setPicUrl("drawable://" + R.drawable.pic_slide_5);
 		recommend.setTitle("推荐1");
 		recommends.add(recommend);
-		
+
 	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		picScale = BitmapPicUtils.getPicScale(getResources(), R.drawable.pic_slide_1);
-		imageResId = new int[] { R.drawable.pic_slide_5, R.drawable.pic_slide_1,
-				R.drawable.pic_slide_2, R.drawable.pic_slide_3, R.drawable.pic_slide_4, };
+		picScale = BitmapPicUtils.getPicScale(getResources(),
+				R.drawable.pic_slide_1);
+		imageResId = new int[] { R.drawable.pic_slide_5,
+				R.drawable.pic_slide_1, R.drawable.pic_slide_2,
+				R.drawable.pic_slide_3, R.drawable.pic_slide_4, };
 
 		Context mContext = getActivity();
-		
+
 		titles = new String[imageResId.length];
 		titles[0] = "丽江风水";
 		titles[1] = "草堆";
@@ -146,8 +148,7 @@ AbsListView.OnItemClickListener {
 		titles[3] = "城市风光";
 		titles[4] = "蓝天白云";
 
-		
-		adImgUrl =new ArrayList<String>();
+		adImgUrl = new ArrayList<String>();
 		for (int i = 0; i < imageResId.length; i++) {
 
 			adImgUrl.add("drawable://" + imageResId[i]);
@@ -158,15 +159,16 @@ AbsListView.OnItemClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		 if(rootView==null){ 
-			 rootView = inflater.inflate(R.layout.fragment_home, container, false);
-			 initListView(rootView);
-		 }
-		 ViewGroup parent = (ViewGroup) rootView.getParent();  
-	     if (parent != null) {  
-	    	 parent.removeView(rootView);  
-	     }  
-	     initView();
+		if (rootView == null) {
+			rootView = inflater.inflate(R.layout.fragment_home, container,
+					false);
+			initListView(rootView);
+		}
+		ViewGroup parent = (ViewGroup) rootView.getParent();
+		if (parent != null) {
+			parent.removeView(rootView);
+		}
+		initView();
 		return rootView;
 	}
 
@@ -175,42 +177,55 @@ AbsListView.OnItemClickListener {
 	 */
 
 	private void initView() {
-		View catering_img =rootView.findViewById(R.id.catering_img);
+		View catering_img = rootView.findViewById(R.id.catering_img);
 		catering_img.setOnClickListener(onClickListener);
-		View strategy_img =rootView.findViewById(R.id.strategy_img);
+		View strategy_img = rootView.findViewById(R.id.strategy_img);
 		strategy_img.setOnClickListener(onClickListener);
-		
+		View route_img = rootView.findViewById(R.id.route_img);
+		route_img.setOnClickListener(onClickListener);
+
 	}
-	 
-    //为弹出窗口实现监听类
-    private OnClickListener  onClickListener = new OnClickListener(){
-    	
-    	public void onClick(View v) {
-    		Intent intent = new Intent();
-    		
-    		switch (v.getId()) {
-    		
-    		case R.id.catering_img:
-	    		intent.setClass(getActivity(), TabCatering.class);
-	    		startActivity(intent);
-    			break;
-    		
-    		case R.id.strategy_img:
-    			intent.setClass(getActivity(), TabStrategy.class);
-    			startActivity(intent);
-    			break;
-    		default:
-    			break;
-    		}
-    	}
-    };
+
+	// 为弹出窗口实现监听类
+	private OnClickListener onClickListener = new OnClickListener() {
+
+		public void onClick(View v) {
+			Intent intent = new Intent();
+
+			switch (v.getId()) {
+
+			case R.id.catering_img:
+				System.out.println("点击了美食");
+				intent.setClass(getActivity(), TabCatering.class);
+				startActivity(intent);
+				break;
+			case R.id.recommender_img:
+				System.out.println("点击了景点推荐");
+
+				break;
+
+			case R.id.strategy_img:
+				intent.setClass(getActivity(), TabStrategy.class);
+				startActivity(intent);
+				break;
+			case R.id.route_img:
+				System.out.println("点击了出行路线");
+				intent.setClass(getActivity(), TabRoute.class);
+				startActivity(intent);
+				break;
+			default:
+				break;
+			}
+		}
+	};
+
 	private void initListView(View view) {
 		// TODO Auto-generated method stub
 		listView = (ListView) view.findViewById(R.id.list);
 		LayoutInflater layoutInflater = getActivity().getLayoutInflater();
 		View header = layoutInflater.inflate(R.layout.viewpaper_image,
 				listView, false);
-		
+
 		dots = new ArrayList<View>();
 		dots.add(header.findViewById(R.id.v_dot0));
 		dots.add(header.findViewById(R.id.v_dot1));
@@ -222,11 +237,10 @@ AbsListView.OnItemClickListener {
 		viewPager = (ViewPager) header.findViewById(R.id.vp);
 		RelativeLayout.LayoutParams viewPaLayoutParams = new RelativeLayout.LayoutParams(
 				MainActivity.screenWidthDip,
-					(int) (MainActivity.screenWidthDip * picScale));
+				(int) (MainActivity.screenWidthDip * picScale));
 		viewPager.setLayoutParams(viewPaLayoutParams);
 		setViewPagerScrollSpeed();
-		viewPager.setAdapter(new ADPagerAdapter(adImgUrl,
-				getActivity()));
+		viewPager.setAdapter(new ADPagerAdapter(adImgUrl, getActivity()));
 		viewPager.setOnPageChangeListener(new MyPageChangeListener());
 		adpater = new HomeAdapter(getActivity(), recommends, imageLoader);
 		listView.addHeaderView(header);
@@ -239,7 +253,8 @@ AbsListView.OnItemClickListener {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Toast.makeText(getActivity(), R.string.wait_none, Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), R.string.wait_none,
+						Toast.LENGTH_SHORT).show();
 				// TODO Auto-generated method stub
 
 			}
@@ -359,11 +374,9 @@ AbsListView.OnItemClickListener {
 		}
 	}
 
-
-
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
