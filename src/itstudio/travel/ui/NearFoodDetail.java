@@ -109,6 +109,8 @@ public class NearFoodDetail extends Activity {
 
 			}
 		});
+		
+		
 	}
 	private class ViewPagerAdapter extends PagerAdapter {
 
@@ -180,6 +182,5 @@ public class NearFoodDetail extends Activity {
 
 	};
 
-
-
+	
 }
