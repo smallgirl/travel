@@ -49,7 +49,9 @@
         <activity android:name="itstudio.travel.fragment.TabCatering" />
         <activity android:name="itstudio.travel.fragment.TabStrategy" />
         <activity android:name="itstudio.travel.fragment.TabRoute" />
+        <activity android:name="itstudio.travel.fragment.FragmentGouwuche" />
         <activity android:name="itstudio.travel.ui.NearFoodDetail" />
+        
         <activity
             android:name="itstudio.travel.sortlistview.ChooseCityActivity"
             android:theme="@style/MyDialogStyleBottom" />

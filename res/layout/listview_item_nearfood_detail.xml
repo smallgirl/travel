@@ -45,7 +45,25 @@
             android:paddingLeft="96.0dip"
             android:paddingRight="96.0dip"
             android:singleLine="true"
-            android:text="美食" />
+            android:text="美食餐饮" />
+
+          <Button
+              android:id="@+id/bt_gouwuche"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:layout_alignTop="@+id/ivTitleBtnLeft22"
+              android:layout_marginRight="10dp"
+              android:background="@drawable/gouwuche" />
+
+          <Button
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignBaseline="@+id/gouwuche"
+              android:layout_alignBottom="@+id/gouwuche"
+              android:layout_toLeftOf="@+id/gouwuche"
+              android:background="@drawable/bt_shoucang" 
+              android:layout_marginRight="15dp"/>
          
     </RelativeLayout>
 
