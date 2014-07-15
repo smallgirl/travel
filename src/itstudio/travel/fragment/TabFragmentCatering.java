@@ -87,16 +87,29 @@ public class TabFragmentCatering extends Fragment {
 			
 			caterings = new ArrayList<Catering>();
 			Catering catering;
-			for(int i=1;i<=5;i++){
+			for(int i=0;i<5;i++){
 				catering = new Catering();
-				catering.setTitle("洞庭土菜馆");
-				catering.setShortInfo("仅售42元，价值49元信阳店正宗韩式自助烤肉晚餐！精选优质新鲜食材，菜品美味丰盛，口感地道正宗，营养丰富，价格实惠，环境温馨舒适，节假日通用！");
+				catering.setTitle("5hours优质火锅");
+				catering.setShortInfo("仅售66元,价值101元2-3人餐！纸巾免费，免费wifi，免费唱歌，提供餐后免费打包服务，10余种酱料，多种小吃，水果无限量供应！");
 				catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods1);
+				if(i==1){
+					catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods2);
+				}
+				if(i==2){
+					catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods3);
+				}
+				if(i==3){
+					catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods4);
+				}
+				if(i==4){
+					catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods5);
+				}
 				catering.setRating(4);
+				catering.setDistance("500米");
 				caterings.add(catering);
 			}			
 			
-			replaceView = inflater.inflate(R.layout.tab_third_fragment ,null);
+			replaceView = inflater.inflate(R.layout.tab_three_listview ,null);
 			listView = (ListView)  replaceView.findViewById(R.id.nearfoods_listview);
 			listAdapter = new CateringAdapter(myActivity, caterings);
 			AnimationAdapter animAdapter = new ScaleInAnimationAdapter(listAdapter);
@@ -104,6 +117,7 @@ public class TabFragmentCatering extends Fragment {
 			animAdapter.setInitialDelayMillis(300);
 			listView.setAdapter(animAdapter);
 			listView.setAdapter(listAdapter);
+			
 			listView.setOnItemClickListener(new OnItemClickListener() {
 
 				@Override

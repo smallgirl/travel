@@ -23,13 +23,11 @@ public class HomeAdapter extends BaseAdapter {
 	private Context context;
 	private LayoutInflater mInflater;
 	DisplayImageOptions options;
-	private ImageLoader imageLoader;
+	private ImageLoader imageLoader = ImageLoader.getInstance();
 	private List<Recommend> recommends;
 	private Recommend recommend ;
 
-	public HomeAdapter(Context context, List<Recommend> recommends,
-			ImageLoader imageLoader) {
-		this.imageLoader = imageLoader;
+	public HomeAdapter(Context context, List<Recommend> recommends) {
 		this.recommends = recommends;
 		this.context = context;
 		this.mInflater = LayoutInflater.from(context);
@@ -38,8 +36,8 @@ public class HomeAdapter extends BaseAdapter {
 				.showImageOnLoading(R.drawable.big_bg)
 				.showImageForEmptyUri(R.drawable.big_bg_bad)
 				.showImageOnFail(R.drawable.big_bg_bad).cacheInMemory(true)
-				.cacheOnDisc(true).considerExifParams(false)
-				.displayer(new FadeInBitmapDisplayer(200))
+				.cacheOnDisc(true).considerExifParams(true)
+				.displayer(new FadeInBitmapDisplayer(0))
 				.bitmapConfig(Bitmap.Config.ALPHA_8).build();
 		
 	}
@@ -71,6 +69,7 @@ public class HomeAdapter extends BaseAdapter {
 		convertView = mInflater.inflate(R.layout.listview_item_home, null);
 		holder.imageView = (ImageView) convertView.findViewById(R.id.image);
 		holder.textView = (TextView) convertView.findViewById(R.id.textview);
+		
 		holder.textView.setText(recommend.getTitle());
 		
 		convertView.setTag(holder);

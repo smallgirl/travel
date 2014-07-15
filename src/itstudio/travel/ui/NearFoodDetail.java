@@ -1,8 +1,9 @@
 package itstudio.travel.ui;
 
 import itstudio.travel.R;
-import itstudio.travel.fragment.FragmentGouwuche;
-import itstudio.travel.ui.MyScrollView.OnScrollListener;
+import itstudio.travel.fragment.TabRoute;
+import itstudio.travel.widget.BuyScrollView;
+import itstudio.travel.widget.BuyScrollView.OnScrollListener;
 
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
@@ -10,57 +11,24 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.Button;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class NearFoodDetail extends Activity implements OnScrollListener {
-
-	private MyScrollView myScrollView;
-	private LinearLayout mBuyLayout;
-	private WindowManager mWindowManager;
-	/**
-	 * 手机屏幕宽度
-	 */
-	private int screenWidth;
-	/**
-	 * 悬浮框View
-	 */
-	private static View suspendView;
-	/**
-	 * 悬浮框的参数
-	 */
-	private static WindowManager.LayoutParams suspendLayoutParams;
-	/**
-	 * 购买布局的高度
-	 */
-	private int buyLayoutHeight;
-	/**
-	 * myScrollView与其父类布局的顶部距离
-	 */
-	private int myScrollViewTop;
-
-	/**
-	 * 购买布局与其父类布局的顶部距离
-	 */
-	private int buyLayoutTop;
 
 	private int imageIds[];
 	private String[] titles;
@@ -74,12 +42,27 @@ public class NearFoodDetail extends Activity implements OnScrollListener {
 	private int currentItem; // 当前页面
 	private ScheduledExecutorService scheduledExecutorService;
 
-	private Button bt_gouwuche;
+	private ImageButton ib_daiwoqu;
+	private TextView end;
+	
+
+	/**
+	 * 自定义的MyScrollView
+	 */
+	private BuyScrollView myScrollView;
+	/**
+	 * 在MyScrollView里面的购买布局
+	 */
+	private LinearLayout mBuyLayout;
+	/**
+	 * 位于顶部的购买布局
+	 */
+	private LinearLayout mTopBuyLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.listview_item_nearfood_detail);
+		setContentView(R.layout.nearfood_detail);
 
 		// 图片ID
 		imageIds = new int[] { R.drawable.a, R.drawable.b, R.drawable.c,
@@ -140,26 +123,64 @@ public class NearFoodDetail extends Activity implements OnScrollListener {
 
 			}
 		});
-		
-		bt_gouwuche=(Button) findViewById(R.id.bt_gouwuche);
-		bt_gouwuche.setOnClickListener(new OnClickListener() {
+
+		myScrollView = (BuyScrollView) findViewById(R.id.scrollView);
+		mBuyLayout = (LinearLayout) findViewById(R.id.buy);
+		mTopBuyLayout = (LinearLayout) findViewById(R.id.top_buy_layout);
+		myScrollView.setOnScrollListener(this);
+
+		// 当布局的状态或者控件的可见性发生改变回调的接口
+
+		findViewById(R.id.parent_layout).getViewTreeObserver()
+				.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+
+					@Override
+					public void onGlobalLayout() {
+						// 这一步很重要，使得上面的购买布局和下面的购买布局重合
+						onScroll(myScrollView.getScrollY());
+
+						System.out.println(myScrollView.getScrollY());
+					}
+				});
+		LinearLayout layout_daiwoqu=(LinearLayout) findViewById(R.id.layout_daiwoqu);
+		layout_daiwoqu.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				System.out.println("点击了购物车");
-				Intent intent=new Intent();
-				intent.setClass(getApplicationContext(), FragmentGouwuche.class);
+				Intent intent = new Intent();
+				intent.setClass(getApplicationContext(), TabRoute.class);
+				end = (TextView) findViewById(R.id.fandain);
+				String endPlace=end.getText().toString();
+				System.out.println("endPlace=="+endPlace);
+				Bundle bundle =new Bundle();
+				//传递目的地的名称
+				//bundle.putString("endPalce",endPlace);
+				bundle.putString("endPalce","郑州大学");
+				intent.putExtras(bundle);
 				startActivity(intent);
 				
 			}
 		});
+		/*ib_daiwoqu =(ImageButton) findViewById(R.id.ib_daiwoqu);
+		ib_daiwoqu.setOnClickListener(new OnClickListener() {
 
-		myScrollView = (MyScrollView) findViewById(R.id.scrollView);
-		mBuyLayout = (LinearLayout) findViewById(R.id.buy);
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(getApplicationContext(), TabRoute.class);
+				end = (TextView) findViewById(R.id.fandain);
+				String endPlace=end.getText().toString();
+				System.out.println("endPlace=="+endPlace);
+				Bundle bundle =new Bundle();
+				//传递目的地的名称
+				//bundle.putString("endPalce",endPlace);
+				bundle.putString("endPalce","郑州大学");
+				intent.putExtras(bundle);
+				startActivity(intent);
+				
+			}
+		});*/
 
-		myScrollView.setOnScrollListener(this);
-		mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-		screenWidth = mWindowManager.getDefaultDisplay().getWidth();
 	}
 
 	private class ViewPagerAdapter extends PagerAdapter {
@@ -233,78 +254,20 @@ public class NearFoodDetail extends Activity implements OnScrollListener {
 	};
 
 	@Override
-	protected void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
-	}
-
-	/**
-	 * 窗口有焦点的时候，即所有的布局绘制完毕的时候，我们来获取购买布局的高度和myScrollView距离父类布局的顶部位置
-	 */
-	@Override
-	public void onWindowFocusChanged(boolean hasFocus) {
-		super.onWindowFocusChanged(hasFocus);
-		if (hasFocus) {
-			buyLayoutHeight = mBuyLayout.getHeight();
-			buyLayoutTop = mBuyLayout.getTop();
-
-			myScrollViewTop = myScrollView.getTop();
-		}
-	}
-
-	/**
-	 * 滚动的回调方法，当滚动的Y距离大于或者等于 购买布局距离父类布局顶部的位置，就显示购买的悬浮框 当滚动的Y的距离小于
-	 * 购买布局距离父类布局顶部的位置加上购买布局的高度就移除购买的悬浮框
-	 * 
-	 */
-	@Override
 	public void onScroll(int scrollY) {
-		if (scrollY >= buyLayoutTop) {
-			if (suspendView == null) {
-				showSuspend();
-			}
-		} else if (scrollY <= buyLayoutTop + buyLayoutHeight) {
-			if (suspendView != null) {
-				removeSuspend();
-			}
-		}
+		int mBuyLayout2ParentTop = Math.max(scrollY, mBuyLayout.getTop());
+		mTopBuyLayout.layout(0, mBuyLayout2ParentTop, mTopBuyLayout.getWidth(),
+				mBuyLayout2ParentTop + mTopBuyLayout.getHeight());
 	}
 
-	/**
-	 * 显示购买的悬浮框
-	 */
-	private void showSuspend() {
-		if (suspendView == null) {
-			suspendView = LayoutInflater.from(this).inflate(
-					R.layout.listview_item_nearfood_detail_goumai, null);
-			if (suspendLayoutParams == null) {
-				suspendLayoutParams = new LayoutParams();
-				suspendLayoutParams.type = LayoutParams.TYPE_PHONE;
-				suspendLayoutParams.format = PixelFormat.RGBA_8888;
-				suspendLayoutParams.flags = LayoutParams.FLAG_NOT_TOUCH_MODAL
-						| LayoutParams.FLAG_NOT_FOCUSABLE;
-				suspendLayoutParams.gravity = Gravity.TOP;
-				suspendLayoutParams.width = screenWidth;
-				suspendLayoutParams.height = buyLayoutHeight;
-				suspendLayoutParams.x = 0;
-				suspendLayoutParams.y = myScrollViewTop;
-			}
-		}
+	public void viewOnclick(View view) {
+		switch (view.getId()) {
+		case R.id.backBtnLayout:
+			finish();
+			break;
 
-		/*
-		 * 添加 权限<uses-permission
-		 * android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-		 */
-		mWindowManager.addView(suspendView, suspendLayoutParams);
-	}
-
-	/**
-	 * 移除购买的悬浮框
-	 */
-	private void removeSuspend() {
-		if (suspendView != null) {
-			mWindowManager.removeView(suspendView);
-			suspendView = null;
+		default:
+			break;
 		}
 	}
 

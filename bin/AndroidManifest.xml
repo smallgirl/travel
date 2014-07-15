@@ -25,8 +25,8 @@
         android:theme="@*android:style/Theme.NoTitleBar" >
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="08OQiOhfL56LxuZoBRmU7K20" />
-
+            android:value="PNo0idSIfquGgEwNGCWnuCvv" />
+        
         <activity
             android:name="itstudio.travel.ui.WelcomeActivity"
             android:label="@string/app_name" >
@@ -49,15 +49,14 @@
         <activity android:name="itstudio.travel.fragment.TabCatering" />
         <activity android:name="itstudio.travel.fragment.TabStrategy" />
         <activity android:name="itstudio.travel.fragment.TabRoute" />
-        <activity android:name="itstudio.travel.fragment.FragmentGouwuche" />
         <activity android:name="itstudio.travel.ui.NearFoodDetail" />
-        
         <activity
             android:name="itstudio.travel.sortlistview.ChooseCityActivity"
             android:theme="@style/MyDialogStyleBottom" />
         <activity
             android:name="itstudio.travel.ui.LoginActivity"
-            android:theme="@style/MyDialogStyleBottom" />
+            android:theme="@style/MyDialogStyleBottom"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
 
         <service
             android:name="com.baidu.location.f"
@@ -66,6 +65,7 @@
         </service>
     </application>
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />

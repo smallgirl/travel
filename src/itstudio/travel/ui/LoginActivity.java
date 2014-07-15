@@ -2,18 +2,18 @@ package itstudio.travel.ui;
 
 import itstudio.travel.R;
 import itstudio.travel.config.Constants;
+import itstudio.travel.widget.InputMethodRelativeLayout;
+import itstudio.travel.widget.InputMethodRelativeLayout.OnSizeChangedListenner;
 import itstudio.travel.widget.ProgressWheel;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
+import android.view.ViewGroup.LayoutParams;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
@@ -23,10 +23,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends Activity  implements OnSizeChangedListenner{
 	
 	private View rootView;
 	private View backBtnLayout;
@@ -36,26 +35,19 @@ public class LoginActivity extends Activity {
 	ProgressWheel progressWheel;
 	private EditText user_name;
 	private EditText user_psw;
-	
+	private View boot;
+	private InputMethodRelativeLayout layout;  
 	InputMethodManager inputMethodManager;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-	 	WindowManager m = getWindowManager();  
-        Display d = m.getDefaultDisplay();  //为获取屏幕宽、高  
-        
         Intent intent = getIntent();
         int width = intent.getIntExtra("width", 180);
         getWindow().setGravity(Gravity.LEFT); 		//设置靠右对齐
 		setContentView(R.layout.fragmen_login_);
-		DisplayMetrics  dm = new DisplayMetrics();  
-	    //取得窗口属性  
-	    getWindowManager().getDefaultDisplay().getMetrics(dm);  
 	    //窗口高度  
-	    int screenHeight = dm.heightPixels;         
-		getWindow().setLayout(width, screenHeight);
+		getWindow().setLayout(width, LayoutParams.MATCH_PARENT);
 		initview();
 	}
 
@@ -74,7 +66,10 @@ public class LoginActivity extends Activity {
 		
 		LinearLayout linear = (LinearLayout)  findViewById(R.id.linear);
 		linear.setVisibility(View.VISIBLE);
-
+		layout = (InputMethodRelativeLayout) findViewById(R.id.root);
+		layout.setOnSizeChangedListenner(this) ;
+        //取得找回密码和新注册布局
+        boot = (LinearLayout) this.findViewById(R.id.reg_and_forget_password_layout2) ;
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.push_bottom_in);
 		animation.setDuration(400);
 		linear.startAnimation(animation);
@@ -195,5 +190,13 @@ public class LoginActivity extends Activity {
 		}
 		
 	}
+	@Override
+	public void onSizeChange(boolean flag,int w ,int h) {  
+        if(flag){//键盘弹出时
+           boot.setVisibility(View.GONE) ;
+        }else{ //键盘隐藏时
+           boot.setVisibility(View.VISIBLE) ;
+        }
+    }  
 
 }

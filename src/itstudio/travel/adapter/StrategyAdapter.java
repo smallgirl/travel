@@ -33,7 +33,7 @@ public class StrategyAdapter extends BaseAdapter {
 	private ImageLoader imageLoader;
 	private List<Strategy> strategies;
 	private Strategy strategy;
-
+	PicModelHodler holder = new PicModelHodler();
 	public StrategyAdapter(Context context, List<Strategy> listStrategies) {
 		this.strategies =  listStrategies;
 		this.mInflater = LayoutInflater.from(context);
@@ -68,8 +68,8 @@ public class StrategyAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
-		PicModelHodler holder = null;
-		holder = new PicModelHodler();
+		
+		
 		strategy = strategies.get(position);
 		convertView = mInflater.inflate(R.layout.listview_item_strategy, null);
 		holder.imageView = (ImageView) convertView.findViewById(R.id.strategy_img);

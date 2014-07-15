@@ -46,7 +46,7 @@ public class TabStrategy extends FragmentActivity {
 		adapter = new MyPagerAdapter(getSupportFragmentManager());
 		pager.setAdapter(adapter);
 		tabs.setShouldExpand(true);
-		tabs.setTypeface(Typeface.DEFAULT_BOLD,Typeface.ITALIC);
+		tabs.setTypeface(Typeface.DEFAULT,Typeface.NORMAL);
 		tabs.setIndicatorColor(Color.parseColor("#99d64b"));
 		tabs.setIndicatorHeight(9);
 		tabs.setViewPager(pager);

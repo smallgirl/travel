@@ -90,7 +90,7 @@ public class TabFragmentStrategy extends Fragment {
 				strategies.add(strategy);
 			}
 			
-			replaceView = inflater.inflate(R.layout.tab_third_fragment ,null);
+			replaceView = inflater.inflate(R.layout.tab_three_listview ,null);
 			listView = (ListView)  replaceView.findViewById(R.id.nearfoods_listview);
 			listAdapter = new StrategyAdapter(myActivity, strategies);
 			AnimationAdapter animAdapter = new ScaleInAnimationAdapter(listAdapter);

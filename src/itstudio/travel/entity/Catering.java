@@ -16,7 +16,15 @@ public class Catering {
 	private String distance;
 	private int rating;
 	private String picUrl;
+	private String detailUrl;
 	
+	
+	public String getDetailUrl() {
+		return detailUrl;
+	}
+	public void setDetailUrl(String detailUrl) {
+		this.detailUrl = detailUrl;
+	}
 	public String getTitle() {
 		return title;
 	}

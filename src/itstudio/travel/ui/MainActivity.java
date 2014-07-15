@@ -1,7 +1,9 @@
 package itstudio.travel.ui;
-import itstudio.travel.R;
 import itstudio.travel.fragment.FragmentHome;
 import itstudio.travel.fragment.LeftSlidingMenuFragment;
+import itstudio.travel.R;
+import com.slidingmenu.lib.app2.SlidingFragmentActivity;
+import com.slidingmenu.lib2.SlidingMenu;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
@@ -9,9 +11,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
 /**
 * @Description MainActivity

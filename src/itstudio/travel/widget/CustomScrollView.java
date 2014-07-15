@@ -183,7 +183,6 @@ public class CustomScrollView extends ScrollView {
 	public void isNeedMove() {
 		int offset = inner.getMeasuredHeight() - getHeight();
 		int scrollY = getScrollY();
-		// Log.e("jj", "scrolly=" + scrollY);
 		// 0是顶部，后面那个是底部
 		if (scrollY == 0 || scrollY == offset) {
 			isMoveing = true;

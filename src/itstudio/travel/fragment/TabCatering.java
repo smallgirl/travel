@@ -39,12 +39,12 @@ public class TabCatering extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tab_three_card);
-		tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs_signup);   //二级标题
-		pager = (ViewPager) findViewById(R.id.pagers_signup);  //内容
+		tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs_signup);
+		pager = (ViewPager) findViewById(R.id.pagers_signup);
 		adapter = new MyPagerAdapter(getSupportFragmentManager());
-		pager.setAdapter(adapter);  //填充内容
+		pager.setAdapter(adapter);
 		tabs.setShouldExpand(true);
-		tabs.setTypeface(Typeface.DEFAULT_BOLD,Typeface.ITALIC);
+		tabs.setTypeface(Typeface.DEFAULT,Typeface.NORMAL);
 		tabs.setIndicatorColor(Color.parseColor("#99d64b"));
 		tabs.setIndicatorHeight(9);
 		tabs.setViewPager(pager);

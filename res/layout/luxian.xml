@@ -16,7 +16,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dip"
-            android:background="@drawable/showleft_selector"
+            android:background="@drawable/fanhui"
             android:gravity="center"
             android:includeFontPadding="false" />
 
