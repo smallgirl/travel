@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/swipe_container"
-    android:background="@color/white" >
-  <itstudio.travel.widget.MyListView xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <itstudio.travel.widget.MyListView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/list"
         android:layout_width="fill_parent"
         android:layout_height="0dip"
-    	android:layout_weight="1"
+        android:layout_weight="1"
+        android:cacheColorHint="#00000000"
         android:choiceMode="singleChoice"
+        android:divider="@null"
         android:drawSelectorOnTop="true"
         android:focusable="false"
         android:gravity="center"
-        android:divider="@null"
-    	android:cacheColorHint="#00000000"
-    	android:listSelector="#00000000"
-    	android:scrollbars="none"
-        />
+        android:listSelector="#00000000"
+        android:scrollbars="none" />
+
 </LinearLayout>

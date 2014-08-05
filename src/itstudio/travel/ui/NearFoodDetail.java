@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,7 +23,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -161,25 +161,17 @@ public class NearFoodDetail extends Activity implements OnScrollListener {
 				
 			}
 		});
-		/*ib_daiwoqu =(ImageButton) findViewById(R.id.ib_daiwoqu);
-		ib_daiwoqu.setOnClickListener(new OnClickListener() {
-
+		LinearLayout layout_lianxiwo=(LinearLayout) findViewById(R.id.layout_lianxiwo);
+		layout_lianxiwo.setOnClickListener(new OnClickListener() {
+			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(getApplicationContext(), TabRoute.class);
-				end = (TextView) findViewById(R.id.fandain);
-				String endPlace=end.getText().toString();
-				System.out.println("endPlace=="+endPlace);
-				Bundle bundle =new Bundle();
-				//传递目的地的名称
-				//bundle.putString("endPalce",endPlace);
-				bundle.putString("endPalce","郑州大学");
-				intent.putExtras(bundle);
-				startActivity(intent);
-				
+				// TODO Auto-generated method stub
+				Uri uri = Uri.parse("tel:10086"); 
+				Intent it = new Intent(Intent.ACTION_DIAL, uri); 
+				startActivity(it); 
 			}
-		});*/
+		});
 
 	}
 

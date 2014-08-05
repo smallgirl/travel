@@ -1,32 +1,38 @@
 package itstudio.travel.fragment;
 
+import itstudio.travel.R;
+import itstudio.travel.adapter.StrategyAdapter;
+import itstudio.travel.entity.Strategy;
+import itstudio.travel.ui.TabHotStrategy;
+import itstudio.travel.widget.KeywordsFlow;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.nhaarman.listviewanimations.swinginadapters.AnimationAdapter;
-import com.nhaarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationAdapter;
-import itstudio.travel.R;
-import itstudio.travel.adapter.StrategyAdapter;
-import itstudio.travel.entity.Strategy;
-import itstudio.travel.widget.KeywordsFlow;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
 
+import com.nhaarman.listviewanimations.swinginadapters.AnimationAdapter;
+import com.nhaarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationAdapter;
+
 /**
-* @Description 攻略TabFragment  
+* @Description 攻略TabView  TabFragment  
 
 * @author MR.Wang
 
@@ -55,10 +61,10 @@ public class TabFragmentStrategy extends Fragment {
 		"水果捞", "椰汁西米露", "烧鸭", "南京卤水鸭", "酸菜鱼",//
 		"烤松茸", "香煎马鲛鱼", "鱼头泡饼", "油焖春笋", "干炒牛河",//
 		"兰州拉面", " 岐山臊子面", "大煮干丝", "豆腐脑" };
-	
+	//不能动
 	public static TabFragmentStrategy newInstance(int position,Activity activity) {
 		TabFragmentStrategy f = new TabFragmentStrategy();
-		myActivity = activity;
+		myActivity = activity;  //   定义activity
 		Bundle b = new Bundle();
 		b.putInt(ARG_POSITION, position);
 		f.setArguments(b);
@@ -79,6 +85,7 @@ public class TabFragmentStrategy extends Fragment {
 
 		FrameLayout fl = new FrameLayout(getActivity());
 		fl.setLayoutParams(params);
+		//pager1
 		if(position==0){
 			strategies = new ArrayList<Strategy>();
 			Strategy strategy;
@@ -90,17 +97,31 @@ public class TabFragmentStrategy extends Fragment {
 				strategies.add(strategy);
 			}
 			
-			replaceView = inflater.inflate(R.layout.tab_three_listview ,null);
-			listView = (ListView)  replaceView.findViewById(R.id.nearfoods_listview);
-			listAdapter = new StrategyAdapter(myActivity, strategies);
+			//设置pager
+			replaceView = inflater.inflate(R.layout.tab_three_listview ,null);  
+			listView = (ListView)  replaceView.findViewById(R.id.nearfoods_listview);  //找到listview 的item
+			listAdapter = new StrategyAdapter(myActivity, strategies);   //StrategyAdapter为自定义的listview的adapter
 			AnimationAdapter animAdapter = new ScaleInAnimationAdapter(listAdapter);
 			animAdapter.setAbsListView(listView);
 			animAdapter.setInitialDelayMillis(300);
 			listView.setAdapter(animAdapter);
 			listView.setAdapter(listAdapter);
+			listView.setOnItemClickListener(new OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView<?> arg0, View arg1,
+						int arg2, long arg3) {
+					// TODO Auto-generated method stub
+					Intent intent=new Intent();
+					intent.setClass(getActivity(), TabHotStrategy.class);
+					startActivity(intent);
+					
+				}
+			});
 			fl.addView(replaceView);
 			return fl;	
 		}
+		//pager3
 		if(position==2){
 			replaceView = inflater.inflate(R.layout.tab_fragment_serch_fly ,null);
 			
@@ -116,7 +137,7 @@ public class TabFragmentStrategy extends Fragment {
 			fl.addView(replaceView);
 			return fl;	
 		}
-		
+		//pager2
 		View life_view = inflater.inflate(R.layout.fragment_comment, null);
 		fl.addView(life_view);
 		return fl;

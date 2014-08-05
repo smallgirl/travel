@@ -20,7 +20,7 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
-* @Description 攻略FragmentActivity 
+* @Description 景点攻略FragmentActivity 
 
 * @author MR.Wang
 
@@ -39,15 +39,17 @@ public class TabStrategy extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tab_three_card);
+		//title标题
 		TextView titleName  = (TextView) findViewById(R.id.title_category);
 		titleName.setText(R.string.gonglue);
+		
 		tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs_signup);
 		pager = (ViewPager) findViewById(R.id.pagers_signup);
 		adapter = new MyPagerAdapter(getSupportFragmentManager());
 		pager.setAdapter(adapter);
 		tabs.setShouldExpand(true);
 		tabs.setTypeface(Typeface.DEFAULT,Typeface.NORMAL);
-		tabs.setIndicatorColor(Color.parseColor("#99d64b"));
+		tabs.setIndicatorColor(Color.parseColor("#99d64b"));  //下划线颜色
 		tabs.setIndicatorHeight(9);
 		tabs.setViewPager(pager);
 

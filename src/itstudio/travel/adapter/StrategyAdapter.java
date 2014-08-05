@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
-* @Description 攻略Adpter
+* @Description 景点攻略的Adpter
 
 * @author MR.Wang
 
