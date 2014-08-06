@@ -65,11 +65,10 @@ public class NearFoodDetail extends Activity implements OnScrollListener {
 		setContentView(R.layout.nearfood_detail);
 
 		// 图片ID
-		imageIds = new int[] { R.drawable.a, R.drawable.b, R.drawable.c,
-				R.drawable.d, R.drawable.e };
+		imageIds = new int[] { R.drawable.pic_fooda, R.drawable.pic_foodb, R.drawable.pic_foodc,R.drawable.pic_fooda, R.drawable.pic_foodb};
 
 		// 图片标题
-		titles = new String[] { "1", "2", "3", "4", "5" };
+		titles = new String[] { "1", "2", "3","4","5"};
 
 		// 显示的图片
 		images = new ArrayList<ImageView>();
@@ -91,7 +90,7 @@ public class NearFoodDetail extends Activity implements OnScrollListener {
 		title = (TextView) findViewById(R.id.title);
 		title.setText(titles[0]);
 
-		mViewPager = (ViewPager) findViewById(R.id.vp);
+		mViewPager = (ViewPager) findViewById(R.id.vp2);
 
 		adapter = new ViewPagerAdapter();
 		mViewPager.setAdapter(adapter);

@@ -35,10 +35,7 @@ public class LeftSlidingMenuFragment extends Fragment implements
 		OnClickListener {
 
 	private View homeBtnLayout;
-	private View personBtnLayout;
 	private View teamBtnLayout;
-	private View discountBtnLayout;
-	private View fineBtnLayout;
 	private View messageBtnLayout;
 	private View orderBtnLayout;
 	private View commentBtnLayout;
@@ -95,10 +92,7 @@ public class LeftSlidingMenuFragment extends Fragment implements
 		mScrollView.setImageView(mBackgroundImageView);
 		
 		homeBtnLayout = parentView.findViewById(R.id.homeBtnLayout);
-		personBtnLayout = parentView.findViewById(R.id.personBtnLayout);
 		teamBtnLayout = parentView.findViewById(R.id.teamBtnLayout);
-		discountBtnLayout = parentView.findViewById(R.id.discountBtnLayout);
-		fineBtnLayout = parentView.findViewById(R.id.fineBtnLayout);
 		messageBtnLayout = parentView.findViewById(R.id.messageBtnLayout);
 		orderBtnLayout = parentView.findViewById(R.id.orderBtnLayout);
 		commentBtnLayout = parentView.findViewById(R.id.commentBtnLayout);
@@ -115,10 +109,7 @@ public class LeftSlidingMenuFragment extends Fragment implements
 		mScrollView.setImageView(mBackgroundImageView);
 		cityTv.setOnClickListener(this);
 		homeBtnLayout.setOnClickListener(this);
-		personBtnLayout.setOnClickListener(this);
 		teamBtnLayout.setOnClickListener(this);
-		discountBtnLayout.setOnClickListener(this);
-		fineBtnLayout.setOnClickListener(this);
 		messageBtnLayout.setOnClickListener(this);
 		orderBtnLayout.setOnClickListener(this);
 		commentBtnLayout.setOnClickListener(this);
@@ -146,13 +137,7 @@ public class LeftSlidingMenuFragment extends Fragment implements
 			currentView.setSelected(true);
 			break;
 			
-		case R.id.personBtnLayout:
-			newContent = FragmentPerson.getInstance();
-			titleTv.setText(R.string.gerenyou);
-			currentView.setSelected(false);
-			currentView =personBtnLayout;
-			currentView.setSelected(true);
-			break;
+
 			
 		case R.id.teamBtnLayout:
 			//App.LEFT_MENU_PAGE = 1;
@@ -162,22 +147,7 @@ public class LeftSlidingMenuFragment extends Fragment implements
 			currentView =teamBtnLayout;
 			currentView.setSelected(true);
 			break;
-			
-		case R.id.discountBtnLayout:
-			newContent = new FragmentDiscount();
-			titleTv.setText(R.string.tehuiyou);
-			currentView.setSelected(false);
-			currentView =discountBtnLayout;
-			currentView.setSelected(true);
-			break;
-
-		case R.id.fineBtnLayout:
-			newContent = FragmentFine.getInstance();
-			titleTv.setText(R.string.jinpingyou);
-			currentView.setSelected(false);
-			currentView =fineBtnLayout;
-			currentView.setSelected(true);
-			break;
+	
 			
 		case R.id.messageBtnLayout:
 			newContent = FragmentMesss.getInstance();

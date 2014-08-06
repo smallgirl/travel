@@ -104,14 +104,7 @@
 			            android:layout_height="0.5dip"
 			            android:layout_marginLeft="68dip"
 			            android:background="@color/toolbox_line" />       
-			         <include
-			            android:id="@+id/personBtnLayout"
-			            layout="@layout/toolbox_item_gerenyou" />       
-			        <View
-			            android:layout_width="fill_parent"
-			            android:layout_height="0.5dip"
-			            android:layout_marginLeft="68dip"
-			            android:background="@color/toolbox_line" />
+
 			        <include
 			            android:id="@+id/teamBtnLayout"
 			            layout="@layout/toolbox_item_tuanyou" />
@@ -120,23 +113,7 @@
 			            android:layout_height="0.5dip"
 			            android:layout_marginLeft="68dip"
 			            android:background="@color/toolbox_line" />
-			        <include
-			            android:id="@+id/discountBtnLayout"
-			            layout="@layout/toolbox_item_tehuiyou" />
-			        <View
-			            android:layout_width="fill_parent"
-			            android:layout_height="0.5dip"
-			            android:layout_marginLeft="68dip"
-			            android:background="@color/toolbox_line" />
-			        <include
-			            android:id="@+id/fineBtnLayout"
-			            layout="@layout/toolbox_item_jinpingyou" />
-			
-			        <View
-			            android:layout_width="fill_parent"
-			            android:layout_height="0.5dip"
-			            android:layout_marginLeft="68dip"
-			            android:background="@color/toolbox_line" />
+
 			        <include
 			            android:id="@+id/messageBtnLayout"
 			            layout="@layout/toolbox_item_message" />
@@ -165,10 +142,7 @@
 			            android:id="@+id/collectBtnLayout"
 			            layout="@layout/toolbox_item_collect" />
 			
-			        <View
-			            android:layout_width="fill_parent"
-			            android:layout_height="0.5dip"
-			            android:background="@color/toolbox_line" />
+
 
                 </LinearLayout>
             </LinearLayout>

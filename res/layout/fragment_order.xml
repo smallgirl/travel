@@ -1,14 +1,70 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:gravity="center"
     android:orientation="vertical" >
-    
-        <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/order"/>
+        android:layout_height="45dp"
+        android:background="#0BA683"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:text="删除"
+            android:paddingLeft="10dip"
+            android:gravity="left|center_vertical"
+            android:textSize="16sp" />
+        <Button
+            android:id="@+id/btnSelectAll"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:paddingRight="10dip"
+            android:gravity="right|center_vertical"
+            android:text="全选"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <View 
+        android:background="#DADBDA"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+         >
+
+        <ListView
+            android:id="@+id/lvListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#DADBDA"
+            android:dividerHeight="1px"
+            android:fadingEdge="none" >
+        </ListView>
+    </LinearLayout>
+
+
+        <Button
+            android:layout_margin="10dip"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/btnDelete"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/btn_pressed_style"
+            android:text="结算"
+            android:textColor="#FDFEFE"
+            android:textSize="16sp" />
+
 </LinearLayout>

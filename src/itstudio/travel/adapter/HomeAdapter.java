@@ -67,8 +67,8 @@ public class HomeAdapter extends BaseAdapter {
 		recommend = recommends.get(position);
 		holder = new PicModelHodler();
 		convertView = mInflater.inflate(R.layout.listview_item_home, null);
-		holder.imageView = (ImageView) convertView.findViewById(R.id.image);
-		holder.textView = (TextView) convertView.findViewById(R.id.textview);
+		holder.imageView = (ImageView) convertView.findViewById(R.id.image_icon);
+		holder.textView = (TextView) convertView.findViewById(R.id.agency_name);
 		
 		holder.textView.setText(recommend.getTitle());
 		
@@ -100,9 +100,6 @@ public class HomeAdapter extends BaseAdapter {
 					}
 				});
 		
-		if(recommend.getPicUrl().equals(R.layout.listview_item_home_category+"")){
-			return mInflater.inflate(R.layout.listview_item_home_category, null);
-		}
 		return convertView;
 	}
 

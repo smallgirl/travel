@@ -2,6 +2,7 @@ package itstudio.travel.ui;
 
 import itstudio.travel.R;
 import itstudio.travel.adapter.GuidePagerAdapter;
+
 import java.util.ArrayList;
 import android.app.Activity;
 import android.os.Bundle;
@@ -48,8 +49,7 @@ public class GuideActivity extends Activity {
 		View view1 = mLi.inflate(R.layout.guide1, null);
 		View view2 = mLi.inflate(R.layout.guide2, null);
 		View view3 = mLi.inflate(R.layout.guide3, null);
-		View view4 = mLi.inflate(R.layout.guide4, null);
-		View view5 = mLi.inflate(R.layout.guide5, null);
+		View view5 = mLi.inflate(R.layout.guide4, null);
 		/*
 		 * 这里将每一页显示的view存放到ArrayList集合中 可以在ViewPager适配器中顺序调用展示
 		 */
@@ -57,7 +57,6 @@ public class GuideActivity extends Activity {
 		views.add(view1);
 		views.add(view2);
 		views.add(view3);
-		views.add(view4);
 		views.add(view5);
 		// 填充ViewPager的数据适配器
 		GuidePagerAdapter mPagerAdapter = new GuidePagerAdapter(views,GuideActivity.this);
@@ -72,37 +71,37 @@ public class GuideActivity extends Activity {
 			switch (page) {
 			case 0:
 				mPage0.setImageDrawable(getResources().getDrawable(
-						R.drawable.moon_page_selected));
+						R.drawable.dot_focused));
 				mPage1.setImageDrawable(getResources().getDrawable(
-						R.drawable.moon_page_unselected));
+						R.drawable.dot_normal));
 				break;
 			case 1:
 				mPage1.setImageDrawable(getResources().getDrawable(
-						R.drawable.moon_page_selected));
+						R.drawable.dot_focused));
 				mPage0.setImageDrawable(getResources().getDrawable(
-						R.drawable.moon_page_unselected));
+						R.drawable.dot_normal));
 				mPage2.setImageDrawable(getResources().getDrawable(
-						R.drawable.moon_page_unselected));
+						R.drawable.dot_normal));
 				break;
 			case 2:
 				mPage2.setImageDrawable(getResources().getDrawable(
-						R.drawable.moon_page_selected));
+						R.drawable.dot_focused));
 				mPage1.setImageDrawable(getResources().getDrawable(
-						R.drawable.moon_page_unselected));
+						R.drawable.dot_normal));
 				mPage3.setImageDrawable(getResources().getDrawable(
-						R.drawable.moon_page_unselected));
+						R.drawable.dot_normal));
 				break;
 			case 3:
 				mPage3.setImageDrawable(getResources().getDrawable(
-						R.drawable.moon_page_selected));
+						R.drawable.dot_focused));
 				mPage2.setImageDrawable(getResources().getDrawable(
-						R.drawable.moon_page_unselected));
+						R.drawable.dot_normal));
 				break;
-				
+/*				
 			case 4:
 				linearLayout_indicator.setVisibility(View.INVISIBLE);
 
-				break;
+				break;*/
 			}
 			
 		}

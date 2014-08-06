@@ -17,8 +17,15 @@ public class Catering {
 	private int rating;
 	private String picUrl;
 	private String detailUrl;
+	private float price;
 	
 	
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
+	}
 	public String getDetailUrl() {
 		return detailUrl;
 	}

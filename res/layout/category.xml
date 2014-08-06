@@ -47,14 +47,14 @@
 		    	android:gravity="center" >
 	        	<ImageView
 	        	    android:clickable="true"
-	        	    android:id="@+id/recommender_img"
+	        	    android:id="@+id/preview_img"
 	        	    android:layout_width="wrap_content"
 	    			android:layout_height="wrap_content"
 	    			android:src="@drawable/category_recom"/>
 	        	<TextView 
 	        	    android:layout_width="wrap_content"
 	    			android:layout_height="wrap_content"
-	    			android:text="@string/tuijain"
+	    			android:text="@string/sight_preview"
 	    			android:layout_marginTop="5dip"
 	        	    android:textColor="@color/text_black_normal"/>
 			</LinearLayout>
@@ -187,7 +187,31 @@
 			</LinearLayout>
 	    </LinearLayout>
      </LinearLayout>
-   	<LinearLayout 
+        <LinearLayout 
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:gravity="center_vertical"
+    	 >
+		<ImageView 
+	      	android:layout_width="150dip"
+	   		android:layout_height="wrap_content"
+	   		android:layout_weight="1"
+	   		android:src="@drawable/tehuiqu"/>
+	 <TextView 
+	        android:layout_width="10dip"
+	    	android:layout_height="wrap_content"
+	    	android:layout_weight="0"
+	        />
+		<ImageView 
+	      	android:layout_width="150dip"
+	      	android:layout_weight="1"
+	   		android:layout_height="wrap_content"
+	   		android:src="@drawable/jingpinqu"/>
+    </LinearLayout>
+       	<LinearLayout 
     	android:layout_height="wrap_content"
     	android:orientation="horizontal"
         android:layout_width="fill_parent"
@@ -209,5 +233,49 @@
 	    	android:gravity="center_vertical"
 	        />
     </LinearLayout>
+    <ImageView 
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:layout_marginLeft="10dip"
+        	android:layout_marginRight="10dip"
+        	android:layout_marginTop="5dip"
+            android:src="@drawable/pic_hotsight1" />
+    <ImageView 
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="5dip"
+            android:layout_marginLeft="10dip"
+        	android:layout_marginRight="10dip"
+            android:src="@drawable/pic_hotsight2"/>
+
+   	<LinearLayout 
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="10dip"
+        android:layout_marginTop="10dip"
+        android:gravity="center_vertical"
+    	 >
+		<ImageView 
+	      	android:layout_width="wrap_content"
+	   		android:layout_height="wrap_content"
+	   		android:src="@drawable/travel_top"/>
+	    <TextView 
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:text="郑州旅行社Top 5"
+	    	android:textColor="#7f000000"
+	    	android:textSize="17sp"
+	    	android:textStyle="bold"
+	    	android:gravity="center_vertical"
+	        />
+    </LinearLayout>
+
 
 </LinearLayout>

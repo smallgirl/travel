@@ -4,18 +4,17 @@ import itstudio.travel.adapter.ADPagerAdapter;
 import itstudio.travel.adapter.CardsAnimationAdapter;
 import itstudio.travel.adapter.HomeAdapter;
 import itstudio.travel.entity.Recommend;
+import itstudio.travel.ui.HotelActivity;
 import itstudio.travel.ui.MainActivity;
-import itstudio.travel.util.BitmapPicUtils;
+import itstudio.travel.ui.SightPreviewActivity;
 import itstudio.travel.util.FixedSpeedScroller;
 import itstudio.travel.widget.MyListView;
-
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
 import itstudio.travel.R;
 import com.nhaarman.listviewanimations.swinginadapters.AnimationAdapter;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -28,8 +27,6 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,12 +75,9 @@ AbsListView.OnItemClickListener {
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
 	private HomeAdapter adpater;
 	private List<String> adImgUrl;// viewPaper广告位的 图片url
-	private List<String > imgUrl;	// listview的 图片url
 	private List<Recommend> recommends;
 	private Recommend recommend ;
-	//SwipeRefreshLayout mSwipeLayout;
 	
-	//private List<String > titles;
 
 	private static FragmentHome singleton;
 
@@ -95,46 +89,33 @@ AbsListView.OnItemClickListener {
 	}
 	private FragmentHome(Context context) {
 		this.context = context;
-		imgUrl = new ArrayList<String>();
-		imgUrl.add("drawable://" + R.drawable.pic_seckill_1);
-		imgUrl.add("drawable://" + R.drawable.pic_slide_2);
-		imgUrl.add(R.layout.listview_item_home_category+"");
-		imgUrl.add("drawable://" + R.drawable.pic_slide_3);
-		imgUrl.add("drawable://" + R.drawable.pic_slide_4);
-		imgUrl.add("drawable://" + R.drawable.pic_slide_5);
+
 		recommends = new ArrayList<Recommend>();
-		
 		recommend = new Recommend();
-		recommend.setPicUrl("drawable://" + R.drawable.pic_seckill_1);
-		recommend.setTitle("秒杀1");
+		recommend.setPicUrl("drawable://" + R.drawable.icon_hot1);
+		recommend.setTitle("河南省康辉旅行社团有限公司");
 		recommends.add(recommend);
 		
 		recommend = new Recommend();
-		recommend.setPicUrl("drawable://" + R.drawable.pic_slide_2);
-		recommend.setTitle("秒杀2");
+		recommend.setPicUrl("drawable://" + R.drawable.icon_hot2);
+		recommend.setTitle("河南省中州 国际旅行社");
 		recommends.add(recommend);
 		
 		recommend = new Recommend();
-		recommend.setPicUrl("drawable://" + R.drawable.pic_slide_3);
-		recommend.setTitle("秒杀3");
+		recommend.setPicUrl("drawable://" + R.drawable.icon_hot3);
+		recommend.setTitle("河南省新华飞扬国际旅行社");
 		recommends.add(recommend);
 		
 		recommend = new Recommend();
-		recommend.setPicUrl(R.layout.listview_item_home_category+"");
-		recommend.setTitle("分割icon");
+		recommend.setPicUrl("drawable://" + R.drawable.icon_hot4);
+		recommend.setTitle("郑州铁路国际旅行社");
 		recommends.add(recommend);
 		
 		recommend = new Recommend();
-		recommend.setPicUrl("drawable://" + R.drawable.pic_slide_4);
-		recommend.setTitle("推荐1");
+		recommend.setPicUrl("drawable://" + R.drawable.icon_hot5);
+		recommend.setTitle("河南省中国青年旅行社第三营业部");
 		recommends.add(recommend);
 		
-		recommend = new Recommend();
-		recommend.setPicUrl("drawable://" + R.drawable.pic_slide_5);
-		recommend.setTitle("推荐1");
-		recommends.add(recommend);
-		
-	
 		
 	}
 
@@ -142,7 +123,7 @@ AbsListView.OnItemClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		picScale = BitmapPicUtils.getPicScale(getResources(), R.drawable.pic_slide_1);
+		picScale = itstudio.travel.util.BitmapPicUtils.getPicScale(getResources(), R.drawable.pic_slide_1);
 		imageResId = new int[] { R.drawable.pic_slide_5, R.drawable.pic_slide_1,
 				R.drawable.pic_slide_2, R.drawable.pic_slide_3, R.drawable.pic_slide_4, };
 
@@ -154,7 +135,6 @@ AbsListView.OnItemClickListener {
 		titles[2] = "亲亲草原";
 		titles[3] = "城市风光";
 		titles[4] = "蓝天白云";
-
 		
 		adImgUrl =new ArrayList<String>();
 		for (int i = 0; i < imageResId.length; i++) {
@@ -187,20 +167,37 @@ AbsListView.OnItemClickListener {
     		
     		switch (v.getId()) {
     		
-    		case R.id.catering_img:
-    			
-    			startZoomOutAnimations(v,TabCatering.class);
-	    		//intent.setClass(getActivity(), TabCatering.class);
-	    		//startActivity(intent);
-    			break;
-    		
+
     		case R.id.strategy_img:
     			startZoomOutAnimations(v,TabStrategy.class);
     			break;
-    		case R.id.route_img:
-    			System.out.println("点击了路线");
-    			
+
+    		case R.id.preview_img:
+    			startZoomOutAnimations(v,SightPreviewActivity.class);
     			break;
+    			
+    		case R.id.ticket_img:
+    			startZoomOutAnimations(v,TabStrategy.class);
+    			break;
+
+    		case R.id.route_img:
+    			startZoomOutAnimations(v,TabRoute.class);
+    			break;
+    			
+		    case R.id.catering_img:
+		    	startZoomOutAnimations(v,TabCatering.class);
+		    	break;
+		    	
+		    case R.id.hotel_img:
+		    	startZoomOutAnimations(v,HotelActivity.class);
+		    	break;
+		    	
+		    case R.id.shopping_img:
+		    	startZoomOutAnimations(v,TabCatering.class);
+		    	break;
+		    case R.id.weather_img:
+		    	startZoomOutAnimations(v,TabCatering.class);
+		    	break;
     		default:
     			break;
     		}
@@ -218,7 +215,6 @@ AbsListView.OnItemClickListener {
 		AnimationSet anim=new AnimationSet(true); 
 		anim.addAnimation(new ScaleAnimation(1F, 0.9F, 1F, 0.9F, 1, 0.5F, 1, 0.5F));
 		anim.setDuration(50);
-		//anim.setInterpolator(new AnticipateInterpolator(2.0F));
 		anim.setFillAfter(true);
 		anim.setAnimationListener(new AnimationListener() {
 			
@@ -300,11 +296,22 @@ AbsListView.OnItemClickListener {
 		adpater = new HomeAdapter(getActivity(), recommends);
 		
 		View catering_img =header.findViewById(R.id.catering_img);
-		catering_img.setOnClickListener(onClickListener);
-		View strategy_img =header.findViewById(R.id.strategy_img);
-		strategy_img.setOnClickListener(onClickListener);
+		View preview_img=header.findViewById(R.id.preview_img);
+		View ticket_img =header.findViewById(R.id.ticket_img);
 		View route_img=header.findViewById(R.id.route_img);
+		View strategy_img =header.findViewById(R.id.strategy_img);
+		View hotel_img =header.findViewById(R.id.hotel_img);
+		View shopping_img =header.findViewById(R.id.shopping_img);
+		View weather_img =header.findViewById(R.id.weather_img);
+		
+		catering_img.setOnClickListener(onClickListener);
+		preview_img.setOnClickListener(onClickListener);
+		ticket_img.setOnClickListener(onClickListener);
 		route_img.setOnClickListener(onClickListener);
+		strategy_img.setOnClickListener(onClickListener);
+		hotel_img.setOnClickListener(onClickListener);
+		shopping_img.setOnClickListener(onClickListener);
+		weather_img.setOnClickListener(onClickListener);
 		
 		
 		listView.addHeaderView(header);
@@ -326,12 +333,6 @@ AbsListView.OnItemClickListener {
 		listView.setOnScrollListener((new PauseOnScrollListener(imageLoader,
 				false, false)));
 		
-		/*mSwipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
-        mSwipeLayout.setOnRefreshListener(this);
-        mSwipeLayout.setColorScheme(R.color.holo_blue_bright,
-                R.color.holo_green_light,
-               R.color.holo_orange_light,
-                R.color.holo_red_light);*/
 	}
 
 	/**
@@ -452,18 +453,5 @@ AbsListView.OnItemClickListener {
 		// TODO Auto-generated method stub
 		
 	}
-	/* (non-Javadoc)
-	 * @see android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener#onRefresh()
-	 */
-/*	@Override
-	public void onRefresh() {
-		// TODO Auto-generated method stub
-		new Handler().postDelayed(new Runnable() {
-			@Override
-			public void run() {
 
-				mSwipeLayout.setRefreshing(false);
-			}
-		}, 1000);
-	}*/
 }

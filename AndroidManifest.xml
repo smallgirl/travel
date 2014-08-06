@@ -51,6 +51,11 @@
         <activity android:name="itstudio.travel.fragment.TabStrategy" />
         <activity android:name="itstudio.travel.fragment.TabRoute" />
         <activity android:name="itstudio.travel.ui.NearFoodDetail" />
+        <activity android:name="itstudio.travel.ui.SightPreviewActivity" />
+        <activity android:name="itstudio.travel.ui.QuanjingActivity" android:screenOrientation="landscape"/>
+        <activity android:name="itstudio.travel.ui.HotelActivity" />
+        <activity android:name="itstudio.travel.fragment.TabHotel" />
+        <activity android:name="itstudio.travel.ui.HotelDetail" />
         <activity
             android:name="itstudio.travel.sortlistview.ChooseCityActivity"
             android:theme="@style/MyDialogStyleBottom" />

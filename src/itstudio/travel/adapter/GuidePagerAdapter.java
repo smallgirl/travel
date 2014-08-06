@@ -3,6 +3,7 @@ package itstudio.travel.adapter;
 import itstudio.travel.R;
 import itstudio.travel.ui.MainActivity;
 import itstudio.travel.util.SharedPreferencesUtil;
+
 import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
@@ -58,7 +59,7 @@ public class GuidePagerAdapter extends PagerAdapter {
 		((ViewPager) container).addView(views.get(position));
 		if (position == views.size() - 1) {
 			Button button = (Button) container
-					.findViewById(R.id.what_news_start_button);
+					.findViewById(R.id.start_button);
 
 			button.setOnClickListener(new OnClickListener() {
 
@@ -87,7 +88,6 @@ public class GuidePagerAdapter extends PagerAdapter {
 	}
 
 	private void goMain() {
-		// ��ת
 		Intent intent = new Intent(activity, MainActivity.class);
 		activity.startActivity(intent);
 		activity.finish();

@@ -1,26 +1,24 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingLeft="10dp" 
     android:paddingRight="10dip"
-    android:paddingBottom="10dip"
-    >
+    android:gravity="center_vertical">
         <ImageView 
-             android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/pic_slide_2"
-            />
-        <TextView 
-            android:id="@+id/textview"
+            android:id="@+id/image_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dip"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:layout_gravity="bottom|center_horizontal"
-            android:text="dsatgsdg"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_hot1"
             />
-</FrameLayout>
+        <TextView 
+            android:id="@+id/agency_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:text="河南省康辉旅行社团有限公司"
+            />
+</LinearLayout>
