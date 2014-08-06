@@ -14,7 +14,36 @@ public class Strategy {
 	private String author;
 	private String picUrl;
 	private String detailUrl;
+	private String date;
+	private String day;
+	private String buyer;
+	private String price;
 	
+	
+	public String getBuyer() {
+		return buyer;
+	}
+	public void setBuyer(String buyer) {
+		this.buyer = buyer;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
+	}
 	public String getTitle() {
 		return title;
 	}

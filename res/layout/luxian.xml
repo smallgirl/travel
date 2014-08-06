@@ -3,36 +3,42 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="#000000" >
+
     <RelativeLayout
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="44dip"
-        android:background="#99d64b"
-        >
-        <ImageButton
-            android:id="@+id/ivTitleBtnLeft22"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dip"
-            android:background="@drawable/arrow_back"
-            android:gravity="center"
-            android:includeFontPadding="false" />
+        android:background="#99d64b" >
 
-        <TextView
-            android:id="@+id/ivTitleLoaction"
-            style="@style/A1_Font"
+        <LinearLayout
+            android:id="@+id/tab_route_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@id/ivTitleBtnLeft22"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:paddingLeft="6.0dip"
-            android:singleLine="true"
-            android:text="郑州"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/ivTitleBtnLeft22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:background="@drawable/fanhui"
+                android:gravity="center"
+                android:includeFontPadding="false" />
+
+            <TextView
+                android:id="@+id/ivTitleLoaction"
+                style="@style/A1_Font"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:paddingLeft="6.0dip"
+                android:singleLine="true"
+                android:text="郑州"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/ivTitleName"
@@ -47,22 +53,21 @@
             android:singleLine="true"
             android:text="出行线路" />
 
-         <Button
-             android:id="@+id/bt_popup"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentRight="true"
-             android:layout_marginRight="10dp"
-             android:layout_alignTop="@+id/ivTitleBtnLeft22"
-             android:background="@drawable/tianjia" />
-
+        <Button
+            android:id="@+id/bt_popup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tianjia" />
     </RelativeLayout>
-    
+
     <com.baidu.mapapi.map.MapView
-        android:layout_below="@+id/titlebar"
         android:id="@+id/bmapView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_below="@+id/titlebar"
         android:clickable="true" />
 
     <Button
@@ -70,8 +75,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="430dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="430dp"
         android:background="@drawable/bt_dingwei" />
-    
+
 </RelativeLayout>

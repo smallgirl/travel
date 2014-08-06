@@ -26,7 +26,7 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="PNo0idSIfquGgEwNGCWnuCvv" />
-        
+
         <activity
             android:name="itstudio.travel.ui.WelcomeActivity"
             android:label="@string/app_name" >
@@ -49,10 +49,15 @@
         <activity android:name="itstudio.travel.fragment.TabCatering" />
         <activity android:name="itstudio.travel.ui.TabHotStrategy" />
         <activity android:name="itstudio.travel.fragment.TabStrategy" />
+        <activity android:name="itstudio.travel.fragment.TabTicketDetail" />
         <activity android:name="itstudio.travel.fragment.TabRoute" />
+        <activity android:name="itstudio.travel.fragment.TabRoute2" />
+        <activity android:name="itstudio.travel.fragment.TabTicket" />
         <activity android:name="itstudio.travel.ui.NearFoodDetail" />
         <activity android:name="itstudio.travel.ui.SightPreviewActivity" />
-        <activity android:name="itstudio.travel.ui.QuanjingActivity" android:screenOrientation="landscape"/>
+        <activity
+            android:name="itstudio.travel.ui.QuanjingActivity"
+            android:screenOrientation="landscape" />
         <activity android:name="itstudio.travel.ui.HotelActivity" />
         <activity android:name="itstudio.travel.fragment.TabHotel" />
         <activity android:name="itstudio.travel.ui.HotelDetail" />
@@ -121,6 +126,6 @@
     </uses-permission>
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
 </manifest>

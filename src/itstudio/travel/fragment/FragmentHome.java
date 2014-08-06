@@ -1,5 +1,6 @@
 package itstudio.travel.fragment;
 
+import itstudio.travel.R;
 import itstudio.travel.adapter.ADPagerAdapter;
 import itstudio.travel.adapter.CardsAnimationAdapter;
 import itstudio.travel.adapter.HomeAdapter;
@@ -9,16 +10,14 @@ import itstudio.travel.ui.MainActivity;
 import itstudio.travel.ui.SightPreviewActivity;
 import itstudio.travel.util.FixedSpeedScroller;
 import itstudio.travel.widget.MyListView;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import itstudio.travel.R;
-import com.nhaarman.listviewanimations.swinginadapters.AnimationAdapter;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -29,21 +28,26 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Animation.AnimationListener;
 import android.view.animation.ScaleAnimation;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AbsListView;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.nhaarman.listviewanimations.swinginadapters.AnimationAdapter;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 
 
 /**
@@ -177,11 +181,11 @@ AbsListView.OnItemClickListener {
     			break;
     			
     		case R.id.ticket_img:
-    			startZoomOutAnimations(v,TabStrategy.class);
+    			startZoomOutAnimations(v,TabTicket.class);
     			break;
 
     		case R.id.route_img:
-    			startZoomOutAnimations(v,TabRoute.class);
+    			startZoomOutAnimations(v,TabRoute2.class);
     			break;
     			
 		    case R.id.catering_img:
@@ -197,6 +201,18 @@ AbsListView.OnItemClickListener {
 		    	break;
 		    case R.id.weather_img:
 		    	startZoomOutAnimations(v,TabCatering.class);
+		    	break;
+		    case R.id.home_jinpin:
+		    	startZoomOutAnimations(v,TabTicket.class);
+		    	break;
+		    case R.id.home_tehui:
+		    	startZoomOutAnimations(v,TabTicket.class);
+		    	break;
+		    case R.id.home_image1:
+		    	startZoomOutAnimations(v,TabTicketDetail.class);
+		    	break;
+		    case R.id.home_image2:
+		    	startZoomOutAnimations(v,TabTicketDetail.class);
 		    	break;
     		default:
     			break;
@@ -303,6 +319,17 @@ AbsListView.OnItemClickListener {
 		View hotel_img =header.findViewById(R.id.hotel_img);
 		View shopping_img =header.findViewById(R.id.shopping_img);
 		View weather_img =header.findViewById(R.id.weather_img);
+		
+		//特惠 精品
+		ImageView iv_tehui=(ImageView) header.findViewById(R.id.home_tehui);
+		ImageView iv_jipin=(ImageView) header.findViewById(R.id.home_jinpin);
+		ImageView iv_image1=(ImageView) header.findViewById(R.id.home_image1);
+		ImageView iv_image2=(ImageView) header.findViewById(R.id.home_image2);
+		
+		iv_jipin.setOnClickListener(onClickListener);
+		iv_tehui.setOnClickListener(onClickListener);
+		iv_image1.setOnClickListener(onClickListener);
+		iv_image2.setOnClickListener(onClickListener);
 		
 		catering_img.setOnClickListener(onClickListener);
 		preview_img.setOnClickListener(onClickListener);

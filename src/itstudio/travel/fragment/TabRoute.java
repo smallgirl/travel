@@ -6,9 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager.LayoutParams;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,8 +27,8 @@ import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationConfigeration;
-import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.MyLocationConfigeration.LocationMode;
+import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.overlayutil.DrivingRouteOvelray;
 import com.baidu.mapapi.overlayutil.OverlayManager;
@@ -49,7 +47,11 @@ import com.baidu.mapapi.search.route.TransitRouteResult;
 import com.baidu.mapapi.search.route.WalkingRoutePlanOption;
 import com.baidu.mapapi.search.route.WalkingRouteResult;
 import com.baidu.mapapi.search.sug.SuggestionSearch;
-
+/**
+ * 
+ * @author Johan
+ *  带我去
+ */
 public class TabRoute extends Activity implements BaiduMap.OnMapClickListener,
 		OnGetRoutePlanResultListener {
 	// 在manifest要定义定位的service
@@ -83,6 +85,7 @@ public class TabRoute extends Activity implements BaiduMap.OnMapClickListener,
 		BaiduMap mBaiduMap;
 		boolean isFirstLoc = true;// 是否首次定位
 		private View popview;
+		private View tab_route_back;
 
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
@@ -97,7 +100,6 @@ public class TabRoute extends Activity implements BaiduMap.OnMapClickListener,
 			//getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
 
 			mCurrentMode = LocationMode.NORMAL;
-			
 
 			// 地图初始化
 			mMapView = (MapView) findViewById(R.id.bmapView);
@@ -155,6 +157,15 @@ public class TabRoute extends Activity implements BaiduMap.OnMapClickListener,
 				public void onClick(View arg0) {
 					System.out.println("dingwei");
 					mLocClient.start();
+				}
+			});
+			tab_route_back=findViewById(R.id.tab_route_back);
+			tab_route_back.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					finish();
 				}
 			});
 

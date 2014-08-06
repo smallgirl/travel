@@ -32,14 +32,14 @@ import com.nhaarman.listviewanimations.swinginadapters.AnimationAdapter;
 import com.nhaarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationAdapter;
 
 /**
-* @Description 攻略TabView  TabFragment  
-
-* @author MR.Wang
-
-* @date 2014-7-5 上午9:39:08 
-
-* @version V1.0
-*/
+ * @Description 攻略TabView TabFragment
+ * 
+ * @author MR.Wang
+ * 
+ * @date 2014-7-5 上午9:39:08
+ * 
+ * @version V1.0
+ */
 public class TabFragmentStrategy extends Fragment {
 
 	private static final String ARG_POSITION = "position";
@@ -50,21 +50,23 @@ public class TabFragmentStrategy extends Fragment {
 	private View replaceView;
 	private List<Strategy> strategies;
 	private KeywordsFlow keywordsFlow;
-	public static final String[] keywords = { "奥尔良烤翅", "咚咚烧", "鳗鱼饭三吃",
-		"火锅", "红烧排骨",//
-		"绝味", "鱼", "三文鱼", "冰激凌", "双皮奶",//
-		"奶昔", "臭豆腐", "鸡蛋卷", "黑森林", "马芬",//
-		"甜甜圈", "榴莲补丁", "干炒牛河", "叉烧包", "猪肝烧麦",//
-		"炖牛杂", "大盘鸡", "羊角包", "安全", "虾饺皇",//
-		"可颂", "钵仔糕", "牛腩面", "心太软", "提拉米苏",//
-		"欧朋", "手抓羊肉", "愤怒的小鸟", "杨枝甘露", "椰汁西米露",//
-		"水果捞", "椰汁西米露", "烧鸭", "南京卤水鸭", "酸菜鱼",//
-		"烤松茸", "香煎马鲛鱼", "鱼头泡饼", "油焖春笋", "干炒牛河",//
-		"兰州拉面", " 岐山臊子面", "大煮干丝", "豆腐脑" };
-	//不能动
-	public static TabFragmentStrategy newInstance(int position,Activity activity) {
+	public static final String[] keywords = { "玉龙雪山", "大研古城", "云杉坪", "白水河",
+			"甘海子",//
+			"冰塔林", "丽江木府", "东巴万神园", "泸沽湖", "束河古镇",//
+			"清凉台", "排云亭", "丹霞峰", "始信峰", "光明顶",//
+			"九寨沟", "桂林山水", "鼓浪屿", "长城", "张家界",//
+			"布达拉宫", "西湖", "洋人街", "千佛山", "天池",//
+			"千山", "大理古镇", "钟鼓楼", "峨眉山", "武当山",//
+			"富士山", "趵突泉", "红旗渠", "嵖岈山", "南海禅寺",//
+			"博物馆", "八关山", "日照", "青岛", "兵马俑",//
+			"都江堰", "故宫", "西双版纳", "迪士尼", "青海湖",//
+			"长江三峡", "少林寺", "金丝大峡谷", "大昭寺" };
+
+	// 不能动
+	public static TabFragmentStrategy newInstance(int position,
+			Activity activity) {
 		TabFragmentStrategy f = new TabFragmentStrategy();
-		myActivity = activity;  //   定义activity
+		myActivity = activity; // 定义activity
 		Bundle b = new Bundle();
 		b.putInt(ARG_POSITION, position);
 		f.setArguments(b);
@@ -79,29 +81,56 @@ public class TabFragmentStrategy extends Fragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 
-		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
+				LayoutParams.MATCH_PARENT);
 
 		FrameLayout fl = new FrameLayout(getActivity());
 		fl.setLayoutParams(params);
-		//pager1
-		if(position==0){
+		// pager1
+		if (position == 0) {
 			strategies = new ArrayList<Strategy>();
 			Strategy strategy;
-			for(int i=1;i<=5;i++){
-				strategy = new Strategy();
-				strategy.setTitle("国庆7日游");
-				strategy.setAuthor("逍遥游一生");
-				strategy.setPicUrl("drawable://" + R.drawable.pic_strategy3);
-				strategies.add(strategy);
-			}
-			
-			//设置pager
-			replaceView = inflater.inflate(R.layout.tab_three_listview ,null);  
-			listView = (ListView)  replaceView.findViewById(R.id.nearfoods_listview);  //找到listview 的item
-			listAdapter = new StrategyAdapter(myActivity, strategies);   //StrategyAdapter为自定义的listview的adapter
-			AnimationAdapter animAdapter = new ScaleInAnimationAdapter(listAdapter);
+
+			strategy = new Strategy();
+			strategy.setTitle("国庆7日游");
+			strategy.setAuthor("逍遥游一生");
+			strategy.setPicUrl("drawable://" + R.drawable.pic_strategy_tianya);
+			strategies.add(strategy);
+
+			strategy = new Strategy();
+			strategy.setTitle("这里是曼谷");
+			strategy.setAuthor("韩大黑");
+			strategy.setPicUrl("drawable://" + R.drawable.pic_strategy1);
+			strategies.add(strategy);
+
+			strategy = new Strategy();
+			strategy.setTitle("青海湖");
+			strategy.setAuthor("妮妮");
+			strategy.setPicUrl("drawable://" + R.drawable.pic_strategy2);
+			strategies.add(strategy);
+
+			strategy = new Strategy();
+			strategy.setTitle("菊花岛4日游");
+			strategy.setAuthor("黑大老万");
+			strategy.setPicUrl("drawable://" + R.drawable.pic_strategy_wuzhizhou);
+			strategies.add(strategy);
+
+			strategy = new Strategy();
+			strategy.setTitle("塞班游");
+			strategy.setAuthor("一镜收江南");
+			strategy.setPicUrl("drawable://" + R.drawable.pic_strategy5);
+			strategies.add(strategy);
+
+			// 设置pager
+			replaceView = inflater.inflate(R.layout.tab_three_listview, null);
+			listView = (ListView) replaceView
+					.findViewById(R.id.nearfoods_listview); // 找到listview 的item
+			listAdapter = new StrategyAdapter(myActivity, strategies); // StrategyAdapter为自定义的listview的adapter
+			AnimationAdapter animAdapter = new ScaleInAnimationAdapter(
+					listAdapter);
 			animAdapter.setAbsListView(listView);
 			animAdapter.setInitialDelayMillis(300);
 			listView.setAdapter(animAdapter);
@@ -112,39 +141,92 @@ public class TabFragmentStrategy extends Fragment {
 				public void onItemClick(AdapterView<?> arg0, View arg1,
 						int arg2, long arg3) {
 					// TODO Auto-generated method stub
-					Intent intent=new Intent();
+					Intent intent = new Intent();
 					intent.setClass(getActivity(), TabHotStrategy.class);
 					startActivity(intent);
-					
+
 				}
 			});
 			fl.addView(replaceView);
-			return fl;	
+			return fl;
 		}
-		//pager3
-		if(position==2){
-			replaceView = inflater.inflate(R.layout.tab_fragment_serch_fly ,null);
-			
-			EditText keyWords  = (EditText) replaceView.findViewById(R.id.keywords) ;
+		// pager3
+		if (position == 2) {
+			replaceView = inflater.inflate(R.layout.tab_fragment_serch_fly,
+					null);
+
+			EditText keyWords = (EditText) replaceView
+					.findViewById(R.id.keywords);
 			keyWords.setHint("输入攻略关键字");
-			keywordsFlow = (KeywordsFlow) replaceView.findViewById(R.id.frameLayout1);
+			keywordsFlow = (KeywordsFlow) replaceView
+					.findViewById(R.id.frameLayout1);
 			keywordsFlow.setDuration(800l);
 			// 添加
 			feedKeywordsFlow(keywordsFlow, keywords);
 			keywordsFlow.go2Show(KeywordsFlow.ANIMATION_OUT);
-			
+
 			keywordsFlow.setOnItemClickListener(onClick);
 			fl.addView(replaceView);
-			return fl;	
+			return fl;
 		}
-		//pager2
-		View life_view = inflater.inflate(R.layout.fragment_comment, null);
-		fl.addView(life_view);
-		return fl;
-	}	
-	
+		strategies = new ArrayList<Strategy>();
+		Strategy strategy;
+		strategy = new Strategy();
+		strategy.setTitle("三清山半月游");
+		strategy.setAuthor("瞬间烟火");
+		strategy.setPicUrl("drawable://" + R.drawable.pic_strategy2);
+		strategies.add(strategy);
 
-	
+		strategy = new Strategy();
+		strategy.setTitle("这里是曼谷");
+		strategy.setAuthor("韩大黑");
+		strategy.setPicUrl("drawable://" + R.drawable.pic_strategy_tianya);
+		strategies.add(strategy);
+
+		strategy = new Strategy();
+		strategy.setTitle("大理双廊！！！");
+		strategy.setAuthor("王左树");
+		strategy.setPicUrl("drawable://" + R.drawable.pic_strategy1);
+		strategies.add(strategy);
+
+		strategy = new Strategy();
+		strategy.setTitle("菊花岛4日游");
+		strategy.setAuthor("黑大老万");
+		strategy.setPicUrl("drawable://" + R.drawable.pic_strategy5);
+		strategies.add(strategy);
+
+		strategy = new Strategy();
+		strategy.setTitle("塞班游");
+		strategy.setAuthor("一镜收江南");
+		strategy.setPicUrl("drawable://" + R.drawable.pic_strategy4);
+		strategies.add(strategy);
+
+		// 设置pager
+		replaceView = inflater.inflate(R.layout.tab_three_listview, null);
+		listView = (ListView) replaceView.findViewById(R.id.nearfoods_listview); // 找到listview
+																					// 的item
+		listAdapter = new StrategyAdapter(myActivity, strategies); // StrategyAdapter为自定义的listview的adapter
+		AnimationAdapter animAdapter = new ScaleInAnimationAdapter(listAdapter);
+		animAdapter.setAbsListView(listView);
+		animAdapter.setInitialDelayMillis(300);
+		listView.setAdapter(animAdapter);
+		listView.setAdapter(listAdapter);
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+				intent.setClass(getActivity(), TabHotStrategy.class);
+				startActivity(intent);
+
+			}
+		});
+		fl.addView(replaceView);
+		return fl;
+	}
+
 	private static void feedKeywordsFlow(KeywordsFlow keywordsFlow, String[] arr) {
 		Random random = new Random();
 		for (int i = 0; i < KeywordsFlow.MAX; i++) {
@@ -153,13 +235,15 @@ public class TabFragmentStrategy extends Fragment {
 			keywordsFlow.feedKeyword(tmp);
 		}
 	}
-	OnClickListener onClick  = new OnClickListener() {
-		
+
+	OnClickListener onClick = new OnClickListener() {
+
 		@Override
 		public void onClick(View view) {
 			// TODO Auto-generated method stub
-			TextView  textview  = (TextView) view;
-			Toast.makeText(getActivity(),textview.getText(),Toast.LENGTH_SHORT).show();
+			TextView textview = (TextView) view;
+			Toast.makeText(getActivity(), textview.getText(),
+					Toast.LENGTH_SHORT).show();
 		}
 	};
 }

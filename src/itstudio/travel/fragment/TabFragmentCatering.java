@@ -30,14 +30,14 @@ import android.widget.Toast;
 import android.widget.FrameLayout.LayoutParams;
 
 /**
-* @Description 餐饮TabFragment 
-
-* @author MR.Wang
-
-* @date 2014-7-5 上午9:38:33 
-
-* @version V1.0
-*/
+ * @Description 餐饮TabFragment
+ * 
+ * @author MR.Wang
+ * 
+ * @date 2014-7-5 上午9:38:33
+ * 
+ * @version V1.0
+ */
 public class TabFragmentCatering extends Fragment {
 
 	private static final String ARG_POSITION = "position";
@@ -48,19 +48,20 @@ public class TabFragmentCatering extends Fragment {
 	private List<Catering> caterings;
 	private View replaceView;
 	private KeywordsFlow keywordsFlow;
-	public static final String[] keywords = { "奥尔良烤翅", "咚咚烧", "鳗鱼饭三吃",
-		"火锅", "红烧排骨",//
-		"绝味", "鱼", "三文鱼", "冰激凌", "双皮奶",//
-		"奶昔", "臭豆腐", "鸡蛋卷", "黑森林", "马芬",//
-		"甜甜圈", "榴莲补丁", "干炒牛河", "叉烧包", "猪肝烧麦",//
-		"炖牛杂", "大盘鸡", "羊角包", "安全", "虾饺皇",//
-		"可颂", "钵仔糕", "牛腩面", "心太软", "提拉米苏",//
-		"欧朋", "手抓羊肉", "愤怒的小鸟", "杨枝甘露", "椰汁西米露",//
-		"水果捞", "椰汁西米露", "烧鸭", "南京卤水鸭", "酸菜鱼",//
-		"烤松茸", "香煎马鲛鱼", "鱼头泡饼", "油焖春笋", "干炒牛河",//
-		"兰州拉面", " 岐山臊子面", "大煮干丝", "豆腐脑" };
-	
-	public static TabFragmentCatering newInstance(int position,Activity activity) {
+	public static final String[] keywords = { "奥尔良烤翅", "咚咚烧", "鳗鱼饭三吃", "火锅",
+			"红烧排骨",//
+			"绝味", "鱼", "三文鱼", "冰激凌", "双皮奶",//
+			"奶昔", "臭豆腐", "鸡蛋卷", "黑森林", "马芬",//
+			"甜甜圈", "榴莲补丁", "干炒牛河", "叉烧包", "猪肝烧麦",//
+			"炖牛杂", "大盘鸡", "羊角包", "安全", "虾饺皇",//
+			"可颂", "钵仔糕", "牛腩面", "心太软", "提拉米苏",//
+			"欧朋", "手抓羊肉", "愤怒的小鸟", "杨枝甘露", "椰汁西米露",//
+			"水果捞", "椰汁西米露", "烧鸭", "南京卤水鸭", "酸菜鱼",//
+			"烤松茸", "香煎马鲛鱼", "鱼头泡饼", "油焖春笋", "干炒牛河",//
+			"兰州拉面", " 岐山臊子面", "大煮干丝", "豆腐脑" };
+
+	public static TabFragmentCatering newInstance(int position,
+			Activity activity) {
 		TabFragmentCatering f = new TabFragmentCatering();
 		myActivity = activity;
 		Bundle b = new Bundle();
@@ -77,78 +78,133 @@ public class TabFragmentCatering extends Fragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 
-		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
+				LayoutParams.MATCH_PARENT);
 
 		FrameLayout fl = new FrameLayout(getActivity());
 		fl.setLayoutParams(params);
-		if(position==0){
-			
+		if (position == 0) {
+
 			caterings = new ArrayList<Catering>();
 			Catering catering;
-			for(int i=0;i<5;i++){
+			for (int i = 0; i < 5; i++) {
 				catering = new Catering();
 				catering.setTitle("5hours优质火锅");
 				catering.setShortInfo("仅售66元,价值101元2-3人餐！纸巾免费，免费wifi，免费唱歌，提供餐后免费打包服务，10余种酱料，多种小吃，水果无限量供应！");
 				catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods1);
-				if(i==1){
-					catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods2);
+				if (i == 1) {
+					catering.setPicUrl("drawable://"
+							+ R.drawable.pic_nearfoods2);
 				}
-				if(i==2){
-					catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods3);
+				if (i == 2) {
+					catering.setPicUrl("drawable://"
+							+ R.drawable.pic_nearfoods3);
 				}
-				if(i==3){
-					catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods4);
+				if (i == 3) {
+					catering.setPicUrl("drawable://"
+							+ R.drawable.pic_nearfoods4);
 				}
-				if(i==4){
-					catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods5);
+				if (i == 4) {
+					catering.setPicUrl("drawable://"
+							+ R.drawable.pic_nearfoods5);
 				}
 				catering.setRating(4);
 				catering.setDistance("500米");
 				caterings.add(catering);
-			}			
-			
-			replaceView = inflater.inflate(R.layout.tab_three_listview ,null);
-			listView = (ListView)  replaceView.findViewById(R.id.nearfoods_listview);
+			}
+
+			replaceView = inflater.inflate(R.layout.tab_three_listview, null);
+			listView = (ListView) replaceView
+					.findViewById(R.id.nearfoods_listview);
 			listAdapter = new CateringAdapter(myActivity, caterings);
-			AnimationAdapter animAdapter = new ScaleInAnimationAdapter(listAdapter);
+			AnimationAdapter animAdapter = new ScaleInAnimationAdapter(
+					listAdapter);
 			animAdapter.setAbsListView(listView);
 			animAdapter.setInitialDelayMillis(300);
 			listView.setAdapter(animAdapter);
 			listView.setAdapter(listAdapter);
-			
+
 			listView.setOnItemClickListener(new OnItemClickListener() {
 
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
 						int arg2, long arg3) {
 					System.out.println("点击了listview");
-					Intent intent=new Intent(getActivity(), NearFoodDetail.class);
+					Intent intent = new Intent(getActivity(),
+							NearFoodDetail.class);
 					startActivity(intent);
 				}
 			});
 			fl.addView(replaceView);
-			return fl;	
+			return fl;
 		}
-		if(position==2){
-			replaceView = inflater.inflate(R.layout.tab_fragment_serch_fly ,null);
-			EditText keyWords  = (EditText) replaceView.findViewById(R.id.keywords) ;
+		if (position == 2) {
+			replaceView = inflater.inflate(R.layout.tab_fragment_serch_fly,
+					null);
+			EditText keyWords = (EditText) replaceView
+					.findViewById(R.id.keywords);
 			keyWords.setHint("输入美食关键字");
-			keywordsFlow = (KeywordsFlow) replaceView.findViewById(R.id.frameLayout1);
+			keywordsFlow = (KeywordsFlow) replaceView
+					.findViewById(R.id.frameLayout1);
 			keywordsFlow.setDuration(800l);
 			// 添加
 			feedKeywordsFlow(keywordsFlow, keywords);
 			keywordsFlow.go2Show(KeywordsFlow.ANIMATION_OUT);
-			
+
 			keywordsFlow.setOnItemClickListener(onClick);
 			fl.addView(replaceView);
-			return fl;	
+			return fl;
 		}
-		View life_view = inflater.inflate(R.layout.fragment_comment, null);
-		fl.addView(life_view);
+		caterings = new ArrayList<Catering>();
+		Catering catering;
+		for (int i = 0; i < 5; i++) {
+			catering = new Catering();
+			catering.setTitle("5hours优质火锅");
+			catering.setShortInfo("仅售66元,价值101元2-3人餐！纸巾免费，免费wifi，免费唱歌，提供餐后免费打包服务，10余种酱料，多种小吃，水果无限量供应！");
+			catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods1);
+			if (i == 1) {
+				catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods2);
+			}
+			if (i == 2) {
+				catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods3);
+			}
+			if (i == 3) {
+				catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods4);
+			}
+			if (i == 4) {
+				catering.setPicUrl("drawable://" + R.drawable.pic_nearfoods5);
+			}
+			catering.setRating(4);
+			catering.setDistance("500米");
+			caterings.add(catering);
+		}
+
+		replaceView = inflater.inflate(R.layout.tab_three_listview, null);
+		listView = (ListView) replaceView.findViewById(R.id.nearfoods_listview);
+		listAdapter = new CateringAdapter(myActivity, caterings);
+		AnimationAdapter animAdapter = new ScaleInAnimationAdapter(listAdapter);
+		animAdapter.setAbsListView(listView);
+		animAdapter.setInitialDelayMillis(300);
+		listView.setAdapter(animAdapter);
+		listView.setAdapter(listAdapter);
+
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				System.out.println("点击了listview");
+				Intent intent = new Intent(getActivity(), NearFoodDetail.class);
+				startActivity(intent);
+			}
+		});
+		fl.addView(replaceView);
 		return fl;
-	}	
+	}
+
 	private static void feedKeywordsFlow(KeywordsFlow keywordsFlow, String[] arr) {
 		Random random = new Random();
 		for (int i = 0; i < KeywordsFlow.MAX; i++) {
@@ -157,13 +213,15 @@ public class TabFragmentCatering extends Fragment {
 			keywordsFlow.feedKeyword(tmp);
 		}
 	}
-	OnClickListener onClick  = new OnClickListener() {
-		
+
+	OnClickListener onClick = new OnClickListener() {
+
 		@Override
 		public void onClick(View view) {
 			// TODO Auto-generated method stub
-			TextView  textview  = (TextView) view;
-			Toast.makeText(getActivity(),textview.getText(),Toast.LENGTH_SHORT).show();
+			TextView textview = (TextView) view;
+			Toast.makeText(getActivity(), textview.getText(),
+					Toast.LENGTH_SHORT).show();
 		}
 	};
 }

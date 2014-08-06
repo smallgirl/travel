@@ -4,10 +4,18 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical" >
-    
-        <TextView
+
+    <itstudio.travel.xlistview.XListView
+        android:id="@+id/team_travel_listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:cacheColorHint="#00000000"
+        android:choiceMode="singleChoice"
+        android:divider="@drawable/hengfenfe"
+        android:drawSelectorOnTop="true"
+        android:focusable="false"
         android:gravity="center"
-        android:text="@string/tuanyou"/>
+        android:listSelector="#00000000"
+        android:scrollbars="none" />
+
 </LinearLayout>
